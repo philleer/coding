@@ -81,7 +81,6 @@ public:
 				len++;
 			} else {
 				if (len > p.second) {
-					p.first = startIndex;
 					p.second = len;
 				}
 				startIndex = len;
@@ -104,12 +103,14 @@ int main(int argc, char *argv[]) {
 	
 	// display the element in the arrayTest
 	for (vector<int>::iterator it = vectorTest.begin();
-	     it != vectorTest.end(); it++)
+		it != vectorTest.end(); it++)
 		cout << *it << " ";
 	cout << endl;
 	
 	Solution solver;
-	// print the length of longest continuous increasing subsequence
+	// print the length of longest continuous increasing
+	// subsequence
 	cout << solver.findLengthOfLCIS(vectorTest) << endl;
 	return 0;
 }
+
