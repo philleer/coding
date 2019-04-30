@@ -76,3 +76,4 @@ int main(int argc, char** argv) {
     printf("\nthe result is: \t%f\n", solver.myPow(x, n));
     return 0;
 }
+
