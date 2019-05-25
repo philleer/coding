@@ -104,7 +104,7 @@ int main(int argc, char *argv[]) {
 	
 	// display the element in the arrayTest
 	for (vector<int>::iterator it = vectorTest.begin();
-		it != vectorTest.end(); it++)
+	     it != vectorTest.end(); it++)
 		cout << *it << " ";
 	cout << endl;
 	

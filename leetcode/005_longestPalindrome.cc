@@ -93,7 +93,7 @@ int main(int argc, char **argv) {
 	printf("\tstr4 = %s\n", str4.c_str());
 
 	Solution solver;
-    string result = solver.longestPalindrome(str1);
+	string result = solver.longestPalindrome(str1);
 	printf("\nthe result substring is shown as:\n");
 	printf("\tresult = %s", result.c_str());
 
@@ -109,5 +109,5 @@ int main(int argc, char **argv) {
 	printf("\nthe result substring is shown as:\n");
 	printf("\tresult = %s", result.c_str());
 
-    return 0;
+	return 0;
 }
