@@ -192,7 +192,7 @@ public:
 		TreeNode* right;
 		TreeNode(int value):val(value), left(nullptr), right(nullptr){}
 	};
-}
+};
 
 int main(int argc, char** argv) {
 
