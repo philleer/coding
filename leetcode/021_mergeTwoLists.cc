@@ -27,7 +27,7 @@
 //
 // If any question, feel free to send me an email
 // phillee2016@163.com
-// or just correct it via Pull Request ^_^
+// or just correct it via Pull Request or create an issue.
 
 >>>>>>> 630b80c... add solution for merging two sorted lists
 #include <iostream>
@@ -72,10 +72,10 @@ public:
 	/*==============================================================  
 	 * Difficuty level:	Easy
 	 * Desciption: 	Merge two sorted linked lists and return a new 
-	 * 				list. The new list should be made by splicing 
-	 * 				together the nodes of the first two lists.
+	 * 		list. The new list should be made by splicing 
+	 * 		together the nodes of the first two lists.
 	 * Example: 	Input: 1->2->4, 1->3->4
-	 *	   			Output: 1->1->2->3->4->4
+	 *	   	Output: 1->1->2->3->4->4
 	 *==============================================================  
 	 */
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {

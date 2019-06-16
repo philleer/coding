@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /******************************************************************************
  * The source is part of my coding practice, a lightweight C++ solution for
  * leetcode program practice.
@@ -13,11 +14,28 @@
  * or just correct it via Pull Request or create an issue.
  ******************************************************************************
  */
+=======
+// The source is part of my coding practice, a lightweight C++
+// solution for leetcode program practice.
+//
+// For all of my code, after check it online by submit, I also compile
+// and run it by my offline IDE 
+// ===================================================================
+// ********* Microsoft Visual Studio 2010 when I use windows *********
+// *********           G++5.4.0 when I am on Linux           *********
+// ===================================================================
+//
+// If any question, feel free to send me an email
+// phillee2016@163.com
+// or just correct it via Pull Request
+
+>>>>>>> 7fe4ff2... find the longest palindromic sub-string
 #include <string>
 #include <cstdio>
 
 class Solution {
 public:
+<<<<<<< HEAD
     /*=========================================================================
      * Description:	Given a string s, find the longest palindromic substring in
      * 			s. You may assume the maximum	length of s is 1000.
@@ -28,6 +46,16 @@ public:
      *
      *      Input: "cbbd"	Output: "bb"
      *=========================================================================
+=======
+    /*==============================================================
+     * Description:	Given a string s, find the longest palindromic
+     * 			substring in s. You may assume the maximum
+     * 			length of s is 1000.
+     * Example 1:	Input: "babad"	Output: "bab"
+     * 			Note: "aba" is also a valid answer.
+     * Example 2:	Input: "cbbd"	Output: "bb"
+     *==============================================================
+>>>>>>> 7fe4ff2... find the longest palindromic sub-string
      */	
     std::string longestPalindrome(std::string s) {
         std::string res;
@@ -106,6 +134,11 @@ int main(int argc, char *argv[]) {
 	printf("\nthe result substring is shown as:\n");
 	printf("\tresult = %s", result.c_str());
 
+<<<<<<< HEAD
 	return 0;
 }
 
+=======
+    return 0;
+}
+>>>>>>> 7fe4ff2... find the longest palindromic sub-string

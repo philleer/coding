@@ -91,4 +91,7 @@ int main(int argc, char **argv) {
 
     return 0;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7fe4ff2... find the longest palindromic sub-string
