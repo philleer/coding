@@ -1,13 +1,16 @@
-// This file is part of my coding practice, a lightweight C++
-// solution for newcoder program practice.
+// The source is part of my coding practice, a lightweight C++
+// solution for leetcode program practice.
 //
-// For all of files in the coding folder, I check the rightness
-// not only by the case test online, but also by my offline IDE
-// Microsoft Visual Studio 2010 as well when I write on windows
-// 7 64-bit platform or by g++5.4 when I am on linux platform.
-// 
-// If there are some questions, please send me an email: 
-// Phil <phillee2016@163.com> or feel free to create an issue.
+// For all of my code, after check it online by submit, I also compile
+// and run it by my offline IDE 
+// ===================================================================
+// ********* Microsoft Visual Studio 2010 when I use windows *********
+// *********           G++5.4.0 when I am on Linux           *********
+// ===================================================================
+//
+// If any question, feel free to send me an email
+// phillee2016@163.com
+// or just correct it via Pull Request.
 
 #include <iostream>
 #include <cstdio>
@@ -25,7 +28,7 @@ using namespace std;
 
 class Solution {
 public:
-    /*
+    /*==============================================================
      * You are given two non-empty linked lists representing two
      * non-negative integers. The digits are stored in reverse order
      * and each of their nodes contain a single digit. Add the two
@@ -34,6 +37,7 @@ public:
      * Example:     Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
      *              Output: 7 -> 0 -> 8
      * Explanation: 342 + 465 = 807.
+     *==============================================================
      */
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         if (l1 == nullptr && l2 == nullptr)
