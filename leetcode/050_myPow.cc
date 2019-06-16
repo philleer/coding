@@ -1,13 +1,16 @@
-// This file is part of my coding practice, a lightweight C++
-// solution for newcoder program practice.
+// The source is part of my coding practice, a lightweight C++
+// solution for leetcode program practice.
 //
-// For all of files in the coding folder, I check the rightness
-// not only by the case test online, but also by my offline IDE
-// Microsoft Visual Studio 2010 as well when I write on windows
-// 7 64-bit platform or by g++5.4 when I am on linux platform.
-// 
-// If there are some questions, please send me an email: 
-// Phil <phillee2016@163.com> or feel free to create an issue.
+// For all of my code, after check it online by submit, I also compile
+// and run it by my offline IDE 
+// ===================================================================
+// ********* Microsoft Visual Studio 2010 when I use windows *********
+// *********           G++5.4.0 when I am on Linux           *********
+// ===================================================================
+//
+// If any question, feel free to send me an email
+// phillee2016@163.com
+// or just correct it via Pull Request or create an issue.
 
 #include <iostream>
 #include <cstdio>
@@ -16,17 +19,16 @@ using namespace std;
 
 class Solution {
 public:
-	/*=============================================================
+    /*===============================================================
      * Description: Implement pow(x, n), which calculates x raised 
      * 			to the power n (xn).
      * Example 1:	Input: 2.00000, 10	Output: 1024.00000
-	 * Example 2:	Input: 2.10000, 3	Output: 9.26100
-	 * Example 3:	Input: 2.00000, -2	Output: 0.25000
-	 * Explanation: 2-2 = 1/22 = 1/4 = 0.25
-	 * Note:	
-	 *		-100.0 < x < 100.0
-	 *		n is 32-bit signed integer, in range [−231, 231 − 1]
-     *=============================================================
+     * Example 2:	Input: 2.10000, 3	Output: 9.26100
+     * Example 3:	Input: 2.00000, -2	Output: 0.25000
+     * Explanation: 2-2 = 1/22 = 1/4 = 0.25
+     * Note:	-100.0 < x < 100.0
+     *		n is 32-bit signed integer, in range [−231, 231 − 1]
+     *===============================================================
      */
     // 递归求解，每次将幂减半，如果是奇数将结果在乘一次自身的值
     double myPow(double x, int n) {
@@ -74,6 +76,3 @@ int main(int argc, char** argv) {
     printf("\nthe result is: \t%f\n", solver.myPow(x, n));
     return 0;
 }
-
-
-
