@@ -10,7 +10,7 @@
 //
 // If any question, feel free to send me an email
 // phillee2016@163.com
-// or just correct it via Pull Request ^_^
+// or just correct it via Pull Request or create an issue.
 
 #include <iostream>
 #include <csdtio>
