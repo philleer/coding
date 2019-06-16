@@ -1,13 +1,16 @@
-// This file is part of my coding practice, a lightweight C++
-// solution for newcoder program practice.
+// The source is part of my coding practice, a lightweight C++
+// solution for leetcode program practice.
 //
-// For all of files in the coding folder, I check the rightness
-// not only by the case test online, but also by my offline IDE
-// Microsoft Visual Studio 2010 as well when I write on windows
-// 7 64-bit platform or by g++5.4 when I am on linux platform.
-// 
-// If there are some questions, please send me an email: 
-// Phil <phillee2016@163.com> or feel free to create an issue.
+// For all of my code, after check it online by submit, I also compile
+// and run it by my offline IDE 
+// ===================================================================
+// ********* Microsoft Visual Studio 2010 when I use windows *********
+// *********           G++5.4.0 when I am on Linux           *********
+// ===================================================================
+//
+// If any question, feel free to send me an email
+// phillee2016@163.com
+// or just correct it via Pull Request or create an issue.
 
 #include <iostream>
 #include <vector>
@@ -21,24 +24,25 @@ class Solution {
 public:
 	/*=============================================================
 	 * Description: Given an integer array nums, find the 
-	 * 				contiguous subarray(containing at least one
-	 * 				number) which has the largest sum and return
-	 *				its sum. 
+	 * 		contiguous subarray(containing at least one
+	 * 		number) which has the largest sum and return
+	 *		its sum. 
 	 * Example: 	Input: [-2,1,-3,4,-1,2,1,-5,4]	Output: 6
-	 *				Explanation: [4,-1,2,1] has the largest sum = 6
+	 *		Explanation: [4,-1,2,1] has the largest sum = 6
 	 * Follow up:	If you have figured out the O(n) solution, try
-	 *				coding another solution using the divide and
-	 *				conquer approach, which is more subtle.
+	 *		coding another solution using the divide and
+	 *		conquer approach, which is more subtle.
 	 *=============================================================
 	 */
 
-	/*
+	/*=============================================================
 	 * Descriptiong: this function works as dynamic programming(DP)
 	 * temp means the max subarray sum before nums[i], and it updates
 	 * to max(temp+nums[i], nums[i]) each step
 	 * maxSum log the maximun value in the process
 	 * Time complexity : O(n)
 	 * Space complexity : O(1)
+	 *=============================================================
 	 */
 	int maxSubArray1(vector<int> &nums) {
 		// take special case into account
@@ -59,13 +63,14 @@ public:
 		return maxSum;
 	}
 
-	/*
+	/*=============================================================
 	 * Descriptiong: this function works recursively
 	 * since the max subarray will exist in the left half part or in
 	 * the right half part or from left to right part
 	 * so we divide the problem to three similar subproblem and solve
 	 * it respectively, that is divide-and-conquer
 	 * Time complexity : T(n) = 2T(n/2) + n ==> O(n) = T(n) = O(nlogn)
+	 *=============================================================
 	 */
 	int maxSubArray2(vector<int> &nums) {
 		return maxSubArrayRecursively(nums, 0, nums.size() - 1);
