@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <vector>
 #include <cmath>
-#include <float.h>	// FLT_MAX 3.402823466e+38F
+#include <float.h>		// FLT_MAX 3.402823466e+38F
 #include <stdexcept>	// std::invalid_argument
-#include <limits>	// std::numeric_limits
+#include <limits>		// std::numeric_limits
 
 // #define PI 3.141593
 
@@ -59,8 +59,7 @@ int main(int argc, char *argv[]) {
 	scanf("%d %f", &size, &sigma);
 
 	std::vector<std::vector<float>> kernel;
-	Solution solver;
-	solver.gaussian_kernel(size, sigma, kernel);
+	Solution().gaussian_kernel(size, sigma, kernel);
 		
 	for (int y = 0; y < size; y++) {
 		for (int x = 0; x < size; x++) {
