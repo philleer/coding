@@ -11,14 +11,13 @@ class Solution {
 public:
 	Solution(){}
 	~Solution() {}
-	std::vector<std::vector<float>> &gaussian_kernel(int size, float sigma);
+	void gaussian_kernel(int size, float sigma, std::vector<std::vector<float>> &res);
 	float fpow(float x);
 };
 
-std::vector<std::vector<float>> &Solution::gaussian_kernel(int size, float sigma) {
-	std::vector<std::vector<float>> result;
+void Solution::gaussian_kernel(int size, float sigma, std::vector<std::vector<float>> &res) {
 	if (size <= 0 || sigma < 1e-5) {
-		return result;
+		throw std::invalid_argument(""Invalid size or sigma!);
 	}
 
 	int bound = size / 2;
@@ -30,16 +29,14 @@ std::vector<std::vector<float>> &Solution::gaussian_kernel(int size, float sigma
 			vec_tmp.push_back(value_tmp);
 			sum += value_tmp;
 		}
-		result.push_back(vec_tmp);
+		res.push_back(vec_tmp);
 	}
 
 	for (int y = 0; y < size; y++) {
 		for (int x = 0; x < size; x++) {
-			result[y][x] /= sum;
+			res[y][x] /= sum;
 		}
 	}
-
-	return result;
 }
 
 float Solution::fpow(float x) {
@@ -60,14 +57,14 @@ int main(int argc, char *argv[]) {
 
 	std::vector<std::vector<float>> kernel;
 	Solution solver;
-	kernel = solver.gaussian_kernel(size, sigma);
-	for (auto vec : kernel) {
-		for (auto ele : *vec) {
-			printf("%f ", *ele);
+	solver.gaussian_kernel(size, sigma, kernel);
+		
+	for (int y = 0; y < size; y++) {
+		for (int x = 0; x < size; x++) {
+			printf("%f ", kernel[y][x]);
 		}
 		printf("\n");
 	}
-
 
 	return 0;
 }
