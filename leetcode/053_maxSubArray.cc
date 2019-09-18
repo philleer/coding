@@ -36,7 +36,7 @@ public:
 	 */
 
 	/*=============================================================
-	 * Descriptiong: this function works as dynamic programming(DP)
+	 * Description: this function works as dynamic programming(DP)
 	 * temp means the max subarray sum before nums[i], and it updates
 	 * to max(temp+nums[i], nums[i]) each step
 	 * maxSum log the maximun value in the process
@@ -64,7 +64,7 @@ public:
 	}
 
 	/*=============================================================
-	 * Descriptiong: this function works recursively
+	 * Description: this function works recursively
 	 * since the max subarray will exist in the left half part or in
 	 * the right half part or from left to right part
 	 * so we divide the problem to three similar subproblem and solve
@@ -78,42 +78,40 @@ public:
 
     int maxSubArrayRecursively(vector<int> &nums, 
     	int leftIndex, int rightIndex) {
-	    int maxSum = 0;
-	    
-	    if (leftIndex == rightIndex) {	// base case
-	        return nums[leftIndex] >= INFMIN ? nums[leftIndex] : 0;
-	    }
-	    else {
-	        int middleIndex = (leftIndex + rightIndex) / 2;
-	        int maxLeftSum = maxSubArrayRecursively(nums, 
-	        	leftIndex, middleIndex);
-	        int maxRightSum = maxSubArrayRecursively(nums, 
-	        	middleIndex + 1, rightIndex);
-	        
-	        int temp = 0;
-	        int maxHalfSumLeft = INFMIN;
-	        for (int i = middleIndex; i >= leftIndex; i--) {
-	            temp += nums[i];
-	            if (temp > maxHalfSumLeft)
-	                maxHalfSumLeft = temp;
-	        }
+	int maxSum = 0;
 
-	        temp = 0;
-	        int maxHalfSumRight = INFMIN;
-	        for (int i = middleIndex + 1; i <= rightIndex; i++) {
-	            temp += nums[i];
-	            if (temp > maxHalfSumRight)
-	                maxHalfSumRight = temp;
-	        }
-	        
-	        maxSum = maxHalfSumLeft + maxHalfSumRight;
-	        if (maxSum < maxLeftSum)
-	            maxSum = maxLeftSum;
-	        if (maxSum < maxRightSum)
-	            maxSum = maxRightSum;
-	    }
+	if (leftIndex == rightIndex) {	// base case
+		return nums[leftIndex] >= INFMIN ? nums[leftIndex] : 0;
+	} else {
+		int middleIndex = (leftIndex + rightIndex) / 2;
+		int maxLeftSum = maxSubArrayRecursively(nums, leftIndex, middleIndex);
+		int maxRightSum = maxSubArrayRecursively(nums, middleIndex + 1, rightIndex);
 
-	    return maxSum;
+		int temp = 0;
+		int maxHalfSumLeft = INFMIN;
+		for (int i = middleIndex; i >= leftIndex; i--) {
+		    temp += nums[i];
+		    if (temp > maxHalfSumLeft)
+			maxHalfSumLeft = temp;
+		}
+
+		temp = 0;
+		int maxHalfSumRight = INFMIN;
+		for (int i = middleIndex + 1; i <= rightIndex; i++) {
+		    temp += nums[i];
+		    if (temp > maxHalfSumRight)
+			maxHalfSumRight = temp;
+		}
+
+		maxSum = maxHalfSumLeft + maxHalfSumRight;
+		if (maxSum < maxLeftSum)
+	    		maxSum = maxLeftSum;
+		if (maxSum < maxRightSum)
+	    		maxSum = maxRightSum;
+		}
+
+		return maxSum;
+    	}
 };
 
 int main(int argc, char **argv) {

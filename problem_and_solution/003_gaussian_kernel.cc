@@ -1,9 +1,9 @@
 #include <cstdio>
 #include <vector>
 #include <cmath>
-#include <float.h>		// FLT_MAX 3.402823466e+38F
+#include <float.h>	// FLT_MAX 3.402823466e+38F
 #include <stdexcept>	// std::invalid_argument
-#include <limits>		// std::numeric_limits
+#include <limits>	// std::numeric_limits
 
 // #define PI 3.141593
 
