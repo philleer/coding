@@ -13,7 +13,6 @@
  * or just correct it via Pull Request or create an issue.
  ******************************************************************************
  */
-
 #include <iostream>
 #include <vector>       // std::vector
 #include <cstddef>      // size_t
@@ -110,3 +109,4 @@ int main(int argc, char **argv) {
 
     return 0;
 }
+
