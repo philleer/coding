@@ -12,27 +12,27 @@ public:
      *      for every i(0 <= i < n).
      * Example: Input1: [4,2,3]
      *          Output1: True
-	 * 			Explanation: Modify 4 to 1 to get a non-decreasing array.
+     * 		Explanation: Modify 4 to 1 to get a non-decreasing array.
      *          Input2: [4,2,1]
-	 *			Output: False
-	 *			Explanation: You can't get a non-decreasing array by modify at
-     *                  most one element.
+     *		Output: False
+     *		Explanation: You can't get a non-decreasing array by modify at
+     *          	most one element.
      * Note: The n belongs to [1, 10,000].
      *=========================================================================
      */
     bool checkPossibility(std::vector<int>& nums) {
         if (nums.empty()) return true;
         
-        int num = 0;
-        int size = nums.size();
-        for (int i = 0; i < size-1; ++i) {
+        size_t num = 0;
+        size_t size = nums.size();
+        for (size_t i = 0; i < size-1; ++i) {
             if (nums[i] <= nums[i+1]) continue;
             
 	    // 第一次AC时的代码
 	    // ===============================================================
             if (i > 0 && i < size-2) {
                 if (nums[i+1] > nums[i+2] ||
-                	nums[i-1] > nums[i+1] && nums[i] > nums[i+2]) {
+                    (nums[i-1] > nums[i+1] && nums[i] > nums[i+2])) {
                     return false;
                 } else {
                     ++num;
@@ -47,13 +47,12 @@ public:
 	    ++num;
             if (i > 0 && i < size-2) {
                 if (nums[i+1] > nums[i+2] ||
-                	(nums[i-1] > nums[i+1] && nums[i] > nums[i+2])) {
+                    (nums[i-1] > nums[i+1] && nums[i] > nums[i+2])) {
                     return false;
                 }
             }
 	    // ===============================================================
         }
-        
         return num <= 1 ? true : false;
     }
 };
