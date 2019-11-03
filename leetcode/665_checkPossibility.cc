@@ -20,7 +20,7 @@ public:
      * Note: The n belongs to [1, 10,000].
      *=========================================================================
      */
-    bool checkPossibility(vector<int>& nums) {
+    bool checkPossibility(std::vector<int>& nums) {
         if (nums.empty()) return true;
         
         int num = 0;
@@ -28,6 +28,8 @@ public:
         for (int i = 0; i < size-1; ++i) {
             if (nums[i] <= nums[i+1]) continue;
             
+			// 第一次AC时的代码
+			// ===============================================================
             if (i > 0 && i < size-2) {
                 if (nums[i+1] > nums[i+2] ||
                 	nums[i-1] > nums[i+1] && nums[i] > nums[i+2]) {
@@ -38,6 +40,18 @@ public:
             } else {
                 ++num;
             }
+			// ===============================================================
+			
+			// 稍微改进精简一下代码
+			// ===============================================================
+			++num;
+            if (i > 0 && i < size-2) {
+                if (nums[i+1] > nums[i+2] ||
+                	(nums[i-1] > nums[i+1] && nums[i] > nums[i+2])) {
+                    return false;
+                }
+            }
+			// ===============================================================
         }
         
         return num <= 1 ? true : false;
