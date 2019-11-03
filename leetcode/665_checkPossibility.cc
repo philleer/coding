@@ -55,6 +55,23 @@ public:
         }
         return num <= 1 ? true : false;
     }
+
+    // 别人的实现方式（略有改动）
+    bool checkPossibility_rth(std::vector<int>& nums) {
+    	if (nums.empty()) return true;
+
+        int count = 0;
+        int size = nums.size();
+        for (int i = 0; i < size-1; ++i) {
+            if (nums[i] > nums[i+1]) {
+                ++count;
+                if (i != 0 && i != size-2 && nums[i-1] > nums[i+1] && nums[i] > nums[i+2])
+                    return false;
+            }
+            if (count > 1) return false;
+        }
+        return true;
+    }
 };
 
 int main(int argc, char **argv) {
