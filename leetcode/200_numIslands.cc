@@ -33,7 +33,7 @@ public:
      *          Output: 3
      *=========================================================================
      */
-    int numIslands(vector<vector<char>>& grid) {
+    int numIslands(std::vector<std::vector<char>>& grid) {
         int num = 0;
         if(grid.empty()) return num;
         rows = grid.size();
