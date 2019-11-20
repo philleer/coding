@@ -71,7 +71,6 @@ public:
 	 */
 	string findLongestCIS(string &str) {
 		if (str.empty()) return "";
-
 		int startIndex = 0;
 		int len = 1;
 

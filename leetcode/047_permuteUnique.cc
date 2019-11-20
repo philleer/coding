@@ -91,7 +91,6 @@ int main(int argc, char *argv[]) {
 
                 std::vector<std::vector<int>> res = Solution().permuteUnique();
                 std::cout << "Result vector:" << std::endl;
-
                 for (int i = 0; i < res.size(); ++i) {
                         for (int j = 0; j < res[i].size(); ++j) {
                                 std::cout << res[i][j] << " ";
