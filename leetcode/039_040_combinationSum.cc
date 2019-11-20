@@ -104,7 +104,7 @@ public:
 			results.push_back(result);
 			return ;
 		}
-	
+		
 		for (int i = index; i < candidates.size(); ++i) {
 			if (i > index && candidates[i] == candidates[i-1])
 				continue;
