@@ -119,6 +119,65 @@ public:
 			}
 		}
 	}
+
+	// Extended solution with bit operation
+	void solveNQueensBit(int n) {
+		std::vector<std::vector<int>> solutions;
+		std::vector<int> result(n, -1);
+		int max = (max << n) - 1;
+		nQueenBit(0, 0, 0, result, solutions, max);
+		visualize(solutions);
+	}
+
+	void nQueenBit(int k, int ld, int rd, std::vector<int> &result,
+		std::vector<std::vector<int>> &solutions, const int max)
+	{
+		if (k == max) {
+			solutions.push_back(result);
+			return;
+		}
+
+		int pos = max & ~(k | ld | rd);
+		// count how many 1 in the binary form of k
+		// it means how many rows have been processed till now
+		int index = count1Bit(k);
+		while (pos) {
+			int p = pos & (~pos+1);
+			pos -= p;
+			result[index] = (p==1 ? 0 : 1+(int)log2(p>>1));
+			nQueenBit(k | p, (ld | p) << 1, (rd | p) >> 1, result, solutions, max);
+		}
+	}
+
+	int count1Bit(int n) {
+		int countOneBit = 0;
+		while (n) {
+			++countOneBit;
+			n &= (n-1);
+		}
+		return countOneBit;
+	}
+
+	void visualize(std::vector<std::vector<int>> &solutions) {
+        int n = solutions.size();
+        for (int r = 0; r < n; ++r) {
+            int l = solutions[r].size();
+            for (int c = 0; c < l; ++c) std::cout << solutions[r][c] << " ";
+            std::cout<< std::endl;
+
+            for (int c = 0; c < l; ++c) {
+                int pos = solutions[r][c];
+                for (int i = 0; i < l; ++i) {
+                    if (i == pos) std::cout << "Q ";
+                    else std::cout << "* ";
+                }
+                std::cout << std::endl;
+            }
+            std::cout << std::endl;
+        }
+
+        std::cout << "Total solutions: " << solutions.size() << std::endl;
+    }
 };
 
 int main(int argc, char *argv[]) {
