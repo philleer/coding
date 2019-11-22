@@ -14,6 +14,7 @@
  ******************************************************************************
  */
 // 51. N-Queens
+// 52. N-Queens II
 #include <iostream>
 #include <vector>
 #include <string>
@@ -81,6 +82,43 @@ public:
 		}
 		return true;
 	}
+
+	/*=========================================================================
+	 * Description: This problem returns the number of distinct solutions to
+	 *	the n-queens puzzle.
+	 * Example:
+	 *	Input: 4
+	 *	Output: 2
+	 *  Explanation: There exist two distinct solutions to the 4-queens puzzle.
+	 *			[[".Q..","...Q","Q...","..Q."], ["..Q.","Q...","...Q",".Q.."]]
+	 *=========================================================================
+	 */
+    int totalNQueens(int n) {
+        std::vector<std::vector<int>> solutions;
+		if (1 == n)	return 1;
+        if (n <= 0 || (n > 1 && n < 4)) return 0;
+		
+		std::vector<int> result;
+		nQueenHelper(result, solutions, n, 0);
+		return solutions.size();
+    }
+    
+    void nQueenHelper(std::vector<int> &result, std::vector<std::vector<int>> &solutions, int n, int row) {
+		if (row >= n) {
+			// Replace the display commands in nQueen function
+			solutions.push_back(result);
+			return ;
+		}
+		
+		for (int i = 0; i < n; ++i) {
+			// check function is still the same with the previous solution
+			if (check(row, i, result)) {
+				result.push_back(i);
+				nQueenHelper(result, solutions, n, row+1);
+				result.pop_back();
+			}
+		}
+	}
 };
 
 int main(int argc, char *argv[]) {
@@ -97,4 +135,3 @@ int main(int argc, char *argv[]) {
 
 	return 0;
 }
-
