@@ -6,7 +6,7 @@
  * it by my offline machine
  * ============================================================================
  * ////////////// Microsoft Visual Studio 2010 when I use windows /////////////
- * //////////////		   G++5.4.0 when I am on Linux	          /////////////
+  //////////////            G++5.4.0 when I am on Linux           /////////////
  * ============================================================================
  *
  * If any question, feel free to send me an email << phillee2016@163.com >>
@@ -19,36 +19,36 @@
 // 707. Design Linked List
 /*=========================================================================
  * Description: Design your implementation of the linked list. You can
- *	choose to use the singly linked list or the doubly linked list. A node
- *	in a singly linked list should have two attributes: val and next.
- *	val is the value of the current node, and next is a pointer to the next
- *	node. If you want to use the doubly linked list, you will need one more
- *	attribute prev to indicate the previous node in the linked list. Assume
- *	all nodes in the linked list are 0-indexed.
+ *  choose to use the singly linked list or the doubly linked list. A node
+ *  in a singly linked list should have two attributes: val and next.
+ *  val is the value of the current node, and next is a pointer to the next
+ *  node. If you want to use the doubly linked list, you will need one more
+ *  attribute prev to indicate the previous node in the linked list. Assume
+ *  all nodes in the linked list are 0-indexed.
  *
- *	Implement these functions in your linked list class:
- *		get(index) : Get the value of the index-th node in the linked list.
- *				If the index is invalid, return -1.
- *		addAtHead(val) : Add a node of value val before the first element of
- *				the linked list. After the insertion, the new node will be
- *				the first node of the linked list.
- *		addAtTail(val) : Append a node of value val to the last element of
- *				the linked list.
- *		addAtIndex(index, val) : Add a node of value val before the index-th
- *				node in the linked list. If index equals to the length of
- *				linked list, the node will be appended to the end of linked
- *				list. If index is greater than the length, the node will not
- *				be inserted.
- *		deleteAtIndex(index) : Delete the index-th node in the linked list,
- *				if the index is valid. 
+ *  Implement these functions in your linked list class:
+ *	get(index) : Get the value of the index-th node in the linked list.
+ *		If the index is invalid, return -1.
+ *	addAtHead(val) : Add a node of value val before the first element of
+ *		the linked list. After the insertion, the new node will be
+ *		the first node of the linked list.
+ *	addAtTail(val) : Append a node of value val to the last element of
+ *		the linked list.
+ *	addAtIndex(index, val) : Add a node of value val before the index-th
+ *		node in the linked list. If index equals to the length of
+ *		linked list, the node will be appended to the end of linked
+ *		list. If index is greater than the length, the node will not
+ *		be inserted.
+ *	deleteAtIndex(index) : Delete the index-th node in the linked list,
+ *		if the index is valid. 
  *
  * Example:
  *	Input: ["MyLinkedList", "addAtHead", "addAtTail", "addAtIndex", "get", 
- *			"deleteAtIndex","get"]
+ *		"deleteAtIndex","get"]
  *	       [[],[1],[3],[1,2],[1],[1],[1]]
  *	Output: [null,null,null,null,2,null,3]
  *	Explanation: MyLinkedList linkedList = new MyLinkedList(); 
- *		     // Initialize empty LinkedList
+ *		// Initialize empty LinkedList
  *		linkedList.addAtHead(1);
  *		linkedList.addAtTail(3);
  *		linkedList.addAtIndex(1, 2);  // linked list becomes 1->2->3
@@ -78,117 +78,121 @@ private:
 	int size;
 
 public:
-    /*
-     * Initialize your data structure here.
-     */
-    MyLinkedList() {
-	head = nullptr;
-	tail = nullptr;
-	size = 0;
-    }
-    
-    /*
-     * Get the value of the index-th node in the linked list. If the index is
-     * invalid, return -1.
-     */
-    int get(int index) {
-	if (index < 0 || index > size - 1) return -1;
-	
-	Node *current = head;
-	for (int i = 0; i < index; i++) current = current->next;
-	return current->val;
-    }
-    
-    /*
-     * Add a node of value val before the first element of the linked list.
-     * After the insertion, the new node will be the first node of the linked
-     * list.
-     */
-    void addAtHead(int val) {
-	Node *newNode = new Node(val);
-	newNode->next = head;
-	head = newNode;
-	size++;
-	
-	if (tail == nullptr) tail = head;
-    }
-    
-    /*
-     * Append a node of value val to the last element of the linked list.
-     */
-    void addAtTail(int val) {
-	if (tail == nullptr) {
-		head = tail = new Node(val);
-	} else {
-		tail->next = new Node(val);
-		tail = tail->next;
+	/*
+	* Initialize your data structure here.
+	*/
+	MyLinkedList() {
+		head = nullptr;
+		tail = nullptr;
+		size = 0;
 	}
-	size++;
-    }
     
-    /*
-     * Add a node of value val before the index-th node in the linked list. If
-     * index equals to the length of linked list, the node will be appended to
-     * the end of linked list. If index is greater than the length, the node
-     * will not be inserted.
-     */
-    void addAtIndex(int index, int val) {
-	if (index < 0) return;
+	/*
+	* Get the value of the index-th node in the linked list. If the
+	* index is invalid, return -1.
+	*/
+	int get(int index) {
+		if (index < 0 || index > size - 1) return -1;
 
-	if (index == 0) {
-		addAtHead(val);
-	} else {
-		if (index <= size) {
-			if(index == size) {
-				tail->next = new Node(val);
-				tail = tail->next;
-			} else {
-				Node *current = head;
-				for (int i = 1; i < index; i++) current = current->next;
-				Node *temp = current->next;
-				current->next = new Node(val);
-				(current->next)->next = temp;
+		Node *current = head;
+		for (int i = 0; i < index; i++)
+			current = current->next;
+		return current->val;
+	}
+    
+	/*
+	* Add a node of value val before the first element of the linked
+	* list. After the insertion, the new node will be the first node
+	* of the linked list.
+	*/
+	void addAtHead(int val) {
+		Node *newNode = new Node(val);
+		newNode->next = head;
+		head = newNode;
+		size++;
+
+		if (tail == nullptr) tail = head;
+	}
+    
+	/*
+	* Append a node of value val to the last element of the linked list.
+	*/
+	void addAtTail(int val) {
+		if (tail == nullptr) {
+			head = tail = new Node(val);
+		} else {
+			tail->next = new Node(val);
+			tail = tail->next;
+		}
+		size++;
+	}
+    
+	/*
+	* Add a node of value val before the index-th node in the linked
+	* list. If index equals to the length of linked list, the node will
+	* be appended to the end of linked list. If index is greater than
+	* the length, the node will not be inserted.
+	*/
+	void addAtIndex(int index, int val) {
+		if (index < 0) return;
+
+		if (index == 0) {
+			addAtHead(val);
+		} else {
+			if (index <= size) {
+				if(index == size) {
+					tail->next = new Node(val);
+					tail = tail->next;
+				} else {
+					Node *current = head;
+					for (int i = 1; i < index; i++)
+						current = current->next;
+					Node *temp = current->next;
+					current->next = new Node(val);
+					(current->next)->next = temp;
+				}
+				size++;
 			}
-			size++;
 		}
 	}
-    }
     
-    /*
-     * Delete the index-th node in the linked list, if the index is valid.
-     */
-    void deleteAtIndex(int index) {
-	if (index < 0 || index > size -1) return;
-	if (index == 0) {
-		if (size == 0) return;
+	/*
+	* Delete the index-th node in the linked list, if the index is valid.
+	*/
+	void deleteAtIndex(int index) {
+		if (index < 0 || index > size -1) return;
+		if (index == 0) {
+			if (size == 0) return;
 
-		head = head->next;
-		if (head == nullptr) tail = nullptr;
-		size--;
-	} else {
-		if (index == size - 1) {
-			if (size == 1) {
-				head = tail = nullptr;
-				size = 0;
+			head = head->next;
+			if (head == nullptr) tail = nullptr;
+			size--;
+		} else {
+			if (index == size - 1) {
+				if (size == 1) {
+					head = tail = nullptr;
+					size = 0;
+				} else {
+					Node *current = head;
+					for (int i = 1; i < index; i++)
+						current = current->next;
+					Node *temp = tail;
+					tail = current;
+					tail->next = nullptr;
+					size--;
+					delete temp;
+				}
 			} else {
-				Node *current = head;
-				for (int i = 1; i < index; i++) current = current->next;
-				Node *temp = tail;
-				tail = current;
-				tail->next = nullptr;
+				Node *previous = head;
+				for (int i = 1; i < index; i++)
+					previous = previous->next;
+				Node *temp = previous->next;
+				previous->next = (previous->next)->next;
 				size--;
 				delete temp;
 			}
-		} else {
-			Node *previous = head;
-			for (int i = 1; i < index; i++) previous = previous->next;
-			Node *temp = previous->next;
-			previous->next = (previous->next)->next;
-			size--;
-			delete temp;
 		}
 	}
-    }
 };
 
 int main(int argc, char *argv[]) {
@@ -202,4 +206,3 @@ int main(int argc, char *argv[]) {
 
 	return 0;
 }
-
