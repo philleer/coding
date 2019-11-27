@@ -17,8 +17,6 @@
 #include <algorithm>
 #include <unordered_map>
 
-using namespace std;
-
 class Solution {
 public:
 	/*=============================================================
@@ -31,41 +29,37 @@ public:
 	 *	    nums[0] + nums[1] = 2 + 7 = 9, return [0, 1].
 	 *=============================================================
 	 */
-    vector<int> twoSum(vector<int>& nums, int target) {
-        unordered_map<int, int> p;
-        vector<int> res;
+	std::vector<int> twoSum(std::vector<int>& nums, int target) {
+	        unordered_map<int, int> p;
+        	std::vector<int> res;
         
-        for (int i = 0; i < nums.size(); i++)
-        {
-            int tem = target - nums[i];
-            if (p.count(tem))
-            {
-                
-                res.push_back(p[tem]);
-                res.push_back(i);
-                break;
-            }
-            p[nums[i]] = i;
-        }
-        
-        return res;
-    }
+	        for (int i = 0; i < nums.size(); i++) {
+		        int tem = target - nums[i];
+		        if (p.count(tem)) {
+                		res.push_back(p[tem]);
+		                res.push_back(i);
+                		break;
+		        }
+	        	p[nums[i]] = i;
+	        }
+		return res;
+	}
 };
 
-int main (int argc, char **argv) {
+int main (int argc, char *argv[]) {
 	int nums[4] = {2, 7, 11, 15};
-	vector<int> vectorTest(4);
+	std::vector<int> vectorTest(4);
 	copy(nums, nums+4, vectorTest.begin());
 
 	for (int i = 0; i < vectorTest.size(); i++)
-		cout << vectorTest[i] << " ";
-	cout << endl;
+		std::cout << vectorTest[i] << " ";
+	std::cout << std::endl;
 
 	Solution solver;
-	vector<int> temp = solver.twoSum(vectorTest, 9);
+	std::vector<int> temp = solver.twoSum(vectorTest, 9);
 	for (int j = 0; j < temp.size(); j++)
-		cout << temp[j] << " ";
-	cout << endl;
+		std::cout << temp[j] << " ";
+	std::cout << std::endl;
 
 	return 0;
 }

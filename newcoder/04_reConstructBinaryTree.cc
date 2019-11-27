@@ -6,8 +6,7 @@
 
 using namespace std;
 
-class Solution
-{
+class Solution {
 public:
 	/*=============================================================
 	 * 题目描述: 输入某二叉树的前序遍历和中序遍历的结果，请重建该二叉树。
@@ -194,8 +193,7 @@ public:
 	};
 };
 
-int main(int argc, char** argv) {
-
+int main(int argc, char *argv[]) {
 	int preList[8] = {1,2,4,7,3,5,6,8};
 	vector<int> preOrderList;
 	preOrderList.assign(preList, preList+8);
