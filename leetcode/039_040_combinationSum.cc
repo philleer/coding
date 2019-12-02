@@ -6,7 +6,7 @@
  * it by my offline machine
  * ============================================================================
  * ////////////// Microsoft Visual Studio 2010 when I use windows /////////////
- * //////////////		   G++5.4.0 when I am on Linux           /////////////
+ * //////////////           G++5.4.0 when I am on Linux           /////////////
  * ============================================================================
  *
  * If any question, feel free to send me an email << phillee2016@163.com >>
@@ -19,11 +19,11 @@
 class Solution {
 public:
 	// 39. Combination Sum
-	/*=========================================================================
-	 * Description: Given a set of candidate numbers without duplicates and a
-	 *	target number, find all unique combinations in candidates where the
-	 *	candidate numbers sums to target. The same repeated number may be
-	 *	chosen from candidates unlimited number of times.
+	/*=====================================================================
+	 * Description: Given a set of candidate numbers without duplicates and
+	 *	a target number, find all unique combinations in candidates
+	 *	where the candidate numbers sums to target. The same repeated
+	 *	number may be chosen from candidates unlimited number of times.
 	 * Note:
 	 *	All numbers (including target) will be positive integers.
 	 *	The solution set must not contain duplicate combinations.
@@ -33,7 +33,7 @@ public:
 	 *	
 	 *	Input: candidates = [2,3,5], target = 8
 	 *	Output: one solution is [[2,2,2,2], [2,3,3], [3,5]]
-	 *=========================================================================
+	 *=====================================================================
 	 */
 	std::vector<std::vector<int>> combinationSum(
 		std::vector<int>& candidates,
@@ -60,18 +60,19 @@ public:
 		for (int i = index; i < candidates.size(); ++i) {
 			if (candidates[i] <= target) {
 				result.push_back(candidates[i]);
-				helper(candidates, target-candidates[i], result, results, i);
+				helper(candidates, target-candidates[i],
+				       result, results, i);
 				result.pop_back();
 			}
 		}
 	}
 
 	// 40. Combination Sum II
-	/*=========================================================================
-	 * Description: Given a collection of candidate numbers and a target number,
-	 *	find all unique combinations in candidates where the candidate
-	 *	numbers sums to target. Each number in candidates may only be used
-	 *	once in the combination.
+	/*=====================================================================
+	 * Description: Given a collection of candidate numbers and a target
+	 *	number,	find all unique combinations in candidates where the
+	 *	candidate numbers sums to target. Each number in candidates may
+	 *	only be used once in the combination.
 	 * Note:
 	 *	All numbers (including target) will be positive integers.
 	 *	The solution set must not contain duplicate combinations.
@@ -81,7 +82,7 @@ public:
 	 *	
 	 *	Input: candidates = [2,5,2,1,2], target = 5
 	 *	Output: one solution is [[1,2,2], [5]]
-	 *=========================================================================
+	 *=====================================================================
 	 */
 	std::vector<std::vector<int>> combinationSum2(
 		std::vector<int>& candidates,
@@ -103,14 +104,15 @@ public:
 			results.push_back(result);
 			return ;
 		}
-		
+	
 		for (int i = index; i < candidates.size(); ++i) {
 			if (i > index && candidates[i] == candidates[i-1])
 				continue;
 			
 			if (candidates[i] <= target) {
 				result.push_back(candidates[i]);
-				helper2(candidates, target-candidates[i], result, results, i+1);
+				helper2(candidates, target-candidates[i],
+					result, results, i+1);
 				result.pop_back();
 			}
 		}
