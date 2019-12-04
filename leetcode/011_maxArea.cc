@@ -15,8 +15,8 @@
  */
 #include <iostream>
 #include <vector>
-#include <string>	// std::string::begin, std::string::end, std::string::erase
-			// std::stoi
+#include <string> // std::string::begin, std::string::end, std::string::erase
+		  // std::stoi
 #include <cctype>	// isspace
 #include <algorithm>	// std::max, std::min
 #include <sstream>	// std::stringstream
@@ -24,17 +24,17 @@
 class Solution {
 public:
 	// 11. Container With Most Water
-	/*=========================================================================
-	 * Description: Given n non-negative integers a1, a2, ..., an , where each
-	 *	represents a point at coordinate (i, ai). n vertical lines are drawn
-	 *	such that the two endpoints of line i is at (i, ai) and (i, 0). Find 2
-	 *	lines, which together with x-axis forms a container, such that the
-	 *	container contains the most water.
+	/*=====================================================================
+	 * Description: Given n non-negative integers a1, a2, ..., an , where
+	 *	each represents a point at coordinate (i, ai). n vertical lines
+	 *	are drawn such that the two endpoints of line i is at (i, ai)
+	 *	and (i, 0). Find 2 lines, which together with x-axis forms a
+	 *	container, such that the container contains the most water.
 	 * Note: You may not slant the container and n is at least 2.
 	 * 
 	 * Example:
 	 *	Input: [1,8,6,2,5,4,8,3,7] 	Output: 49
-	 *=========================================================================
+	 *=====================================================================
 	 */
 	int maxArea1(std::vector<int>& height) {
 		if (height.size() < 2) return 0;
@@ -42,7 +42,8 @@ public:
 		int area = 0, max = 0;
 		for (int i = 0; i < height.size()-1; ++i) {
 			for (int j = i+1; j < height.size(); ++j) {
-				max = std::max(std::min(height[i], height[j])*(j-i), max);
+				max = std::max(std::min(height[i],
+							height[j])*(j-i), max);
 			}
 		}
 		
@@ -55,7 +56,8 @@ public:
 		int result = 0;
 		int i = 0, j = height.size()-1;
 		while (i < j) {
-			result = std::max(result, std::min(height[i], height[j])*(j-i));
+			result = std::max(result, std::min(height[i],
+							   height[j])*(j-i));
 			height[i] < height[j] ? ++i : --j;
 		}
 		
@@ -64,15 +66,15 @@ public:
 };
 
 void trimLeftTrailingSpaces(std::string &input) {
-	input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch) {
-		return !isspace(ch);
-	}));
+	input.erase(input.begin(), find_if(input.begin(), input.end(),
+			[](int ch) { return !isspace(ch);}
+		));
 }
 
 void trimRightTrailingSpaces(std::string &input) {
 	input.erase(find_if(input.rbegin(), input.rend(), [](int ch) {
-		return !isspace(ch);
-	}).base(), input.end());
+			return !isspace(ch);
+		}).base(), input.end());
 }
 
 std::vector<int> stringToIntegerVector(std::string input) {
