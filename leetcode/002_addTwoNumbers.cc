@@ -18,16 +18,18 @@
 
 using namespace std;
 
+/**
+ * Definition for singly-linked list.
+ */
+struct ListNode {
+	int val;
+	ListNode *next;
+	ListNode(int x) : val(x), next(NULL) {}
+};
+
 class Solution {
 public:
-	/**
- 	 * Definition for singly-linked list.
-	 */
-	struct ListNode {
-		int val;
-		ListNode *next;
-		ListNode(int x) : val(x), next(NULL) {}
-	};
+	// 002.add two numbers
 	/*=====================================================================
 	 * You are given two non-empty linked lists representing two
 	 * non-negative integers. The digits are stored in reverse order
