@@ -13,10 +13,11 @@
  * or just correct it via Pull Request or create an issue.
  ******************************************************************************
  */
-#include <iostream>
-#include <sstream>
-#include <vector>
-#include <algorithm>
+#include <iostream>     // std::cout, std::endl
+#include <sstream>      // std::stringstream
+#include <vector>       // std::vector::begin, std::vector::end
+#include <string>       // std::getline
+#include <algorithm>    // std::sort
 
 class Solution {
 public:
@@ -45,7 +46,8 @@ public:
                 return res;
         }
     
-        void backtrack(std::vector<int> &nums,
+        void backtrack(
+                std::vector<int> &nums,
                 std::vector<std::vector<int>> &res,
                 std::vector<int> &sol,
                 std::vector<int> &visited)
@@ -80,6 +82,7 @@ int main(int argc, char *argv[]) {
                 int len;
                 ss >> len;
                 std::vector<int> nums(len, 0);
+                std::cout << "Original vector:" << std::endl;
                 for (int i = 0; i < len; ++i) {
                         ss >> nums[i];
                         std::cout << nums[i] << " ";
@@ -87,7 +90,7 @@ int main(int argc, char *argv[]) {
                 std::cout << std::endl;
 
                 std::vector<std::vector<int>> res = Solution().permuteUnique();
-
+                std::cout << "Result vector:" << std::endl;
                 for (int i = 0; i < res.size(); ++i) {
                         for (int j = 0; j < res[i].size(); ++j) {
                                 std::cout << res[i][j] << " ";
