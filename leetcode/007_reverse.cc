@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /******************************************************************************
  * The source is part of my coding practice, a lightweight C++ solution for
  * leetcode program practice.
@@ -14,22 +13,6 @@
  * or just correct it via Pull Request or create an issue.
  ******************************************************************************
  */
-=======
-// The source is part of my coding practice, a lightweight C++
-// solution for leetcode program practice.
-//
-// For all of my code, after check it online by submit, I also compile
-// and run it by my offline IDE 
-// ===================================================================
-// ********* Microsoft Visual Studio 2010 when I use windows *********
-// *********           G++5.4.0 when I am on Linux           *********
-// ===================================================================
-//
-// If any question, feel free to send me an email
-// phillee2016@163.com
-// or just correct it via Pull Request or create an issue.
-
->>>>>>> 7fe4ff2... find the longest palindromic sub-string
 #include <iostream>
 #include <cstdio>
 
@@ -84,8 +67,3 @@ int main(int argc, char** argv) {
         return 0;
 }
 
-<<<<<<< HEAD
-=======
-    return 0;
-}
->>>>>>> 7fe4ff2... find the longest palindromic sub-string
