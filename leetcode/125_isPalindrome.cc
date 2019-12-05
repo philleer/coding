@@ -100,12 +100,12 @@ std::string boolToString(bool input) {
 
 int main(int argc, char *argv[]) {
         std::string line;
-        while (std::getline(cin, line)) {
+        while (std::getline(std::cin, line)) {
                 std::string s = stringToString(line);
 
                 bool ret = Solution().isPalindrome(s);
                 std::string out = boolToString(ret);
-                cout << out << endl;
+                std::cout << out << std::endl;
         }
         return 0;
 }
