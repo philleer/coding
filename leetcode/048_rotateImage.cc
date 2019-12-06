@@ -1,4 +1,3 @@
-
 /******************************************************************************
  * The source is part of my coding practice, a lightweight C++ solution for
  * leetcode program practice.
