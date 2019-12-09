@@ -6,7 +6,7 @@
  * it by my offline machine
  * ============================================================================
  * ////////////// Microsoft Visual Studio 2010 when I use windows /////////////
- * //////////////	       G++5.4.0 when I am on Linux           /////////////
+ * //////////////           G++5.4.0 when I am on Linux           /////////////
  * ============================================================================
  *
  * If any question, feel free to send me an email << phillee2016@163.com >>
@@ -20,17 +20,19 @@
 
 class Solution {
 public:	
-	/**************************************************************************
-	 * Description: Given a 2D board and a word, find if the word exists in the
-	 *	grid.  The word can be constructed  from  letters  of  sequentially
-	 *	adjacent cell, where "adjacent" are those horizontally / vertically
-	 *	neighboring. The same letter cell may not be used more than once.
+	/*=====================================================================
+	 * Description: Given a 2D board and a word, find if the word exists in
+	 *	the grid. The word can be constructed from letters of
+	 *	sequentially adjacent cell, where "adjacent" are those
+	 *	horizontally/vertically neighboring. The same letter cell may
+	 *	not be used more than once.
+	 *
 	 * Example:
-	 *	board = [['A','B','C','E'], ['S','F','C','S'], ['A','D','E','E']]
+	 *	board = [['A','B','C','E'],['S','F','C','S'],['A','D','E','E']]
 	 *	Given word = "ABCCED", return true
 	 *	Given word = "SEE", return true
 	 *	Given word = "ABCB", return false
-	 **************************************************************************
+	 *=====================================================================
 	 */
 	bool exist(vector<vector<char>>& board, string word) {
 		if (word.empty()) return true;
@@ -40,11 +42,14 @@ public:
 		int cols = board[0].size();
 		if (word.length() > rows*cols) return false;
 		
-		std::vector<std::vector<int>> visited(rows, std::vector<int>(cols, 0));
+		std::vector<std::vector<int>> visited(rows,
+						      std::vector<int>(
+							      cols, 0));
 		for (int i = 0; i < rows; ++i) {
 			for (int j = 0; j < cols; ++j) {
 				if (word[0] == board[i][j]) {
-					if (wordSearch(board, word, visited, i, j, 0))
+					if (wordSearch(board, word, visited,
+						       i, j, 0))
 						return true;
 				}
 			}
@@ -76,22 +81,26 @@ public:
 		{
 			visited[row][col] = 1;
 			if (row < rows-1 &&
-			    wordSearch(board, word, visited, row+1, col, index+1))
+			    wordSearch(board, word, visited, row+1,
+				       col, index+1))
 			{
 				return true;
 			}
 			if (col < cols-1 &&
-			    wordSearch(board, word, visited, row, col+1, index+1))
+			    wordSearch(board, word, visited, row,
+				       col+1, index+1))
 			{
 				return true;
 			}
 			if (row >= 1 &&
-			    wordSearch(board, word, visited, row-1, col, index+1))
+			    wordSearch(board, word, visited, row-1,
+				       col, index+1))
 			{
 				return true;
 			}
 			if (col >= 1 &&
-			    wordSearch(board, word, visited, row, col-1, index+1))
+			    wordSearch(board, word, visited, row,
+				       col-1, index+1))
 			{
 				return true;
 			}
