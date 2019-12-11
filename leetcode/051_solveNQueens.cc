@@ -6,15 +6,13 @@
  * it by my offline machine
  * ============================================================================
  * ////////////// Microsoft Visual Studio 2010 when I use windows /////////////
- * //////////////	       G++5.4.0 when I am on Linux           /////////////
+ * //////////////           G++5.4.0 when I am on Linux           /////////////
  * ============================================================================
  *
  * If any question, feel free to send me an email << phillee2016@163.com >>
  * or just correct it via Pull Request or create an issue.
  ******************************************************************************
  */
-// 51. N-Queens
-// 52. N-Queens II
 #include <iostream>
 #include <vector>
 #include <string>
@@ -22,6 +20,8 @@
 
 class Solution {
 public:
+	// 51. N-Queens
+	// 52. N-Queens II
 	/*=========================================================================
 	 * Description: The n-queens puzzle is the problem of placing n queens on
 	 *	an n×n chessboard such that no two queens attack each other.

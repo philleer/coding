@@ -79,11 +79,9 @@ public:
     }
 };
 
-int main(int argc, const char** argv)
-{
+int main(int argc, const char** argv) {
 	/** TODO **/
-	Solution solver;
-	solver.mergeTwoLists();
+	Solution().mergeTwoLists();
 
 	return 0;
 }
