@@ -16,6 +16,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <assert.h>
 
 class Solution {
 public:
@@ -40,19 +41,27 @@ public:
 	 *	And the output should be also in this form.
 	 *=====================================================================
 	 */
+	int find_position(std::string &s, char c) {
+		for (int i = 0; i < s.length(); ++i) {
+			if (c == a[i]) return (i+1);
+		}
+		return -1;
+	}
+	
 	std::string complexNumberMultiply(std::string a, std::string b) {
 		if (a.empty() || b.empty()) {
 			return (a.empty() ? b : a);
 		}
 
-		int pos = 0;
-		for (int i = 0; i < a.length(); ++i) {
-			if ('+' == a[i]) {
-				pos = i+1;
-				break;
-			}
-		}
+// 		int pos = 0;
+// 		for (int i = 0; i < a.length(); ++i) {
+// 			if ('+' == a[i]) {
+// 				pos = i+1;
+// 				break;
+// 			}
+// 		}
 
+		int pos = find_position(a, '+');
 		int a1, b1, a2, b2;
 		std::stringstream ss;
 		std::string tmp_str = a.substr(0, pos);
@@ -62,14 +71,16 @@ public:
 		ss.str(tmp_str);
 		ss >>b1;
 
-		pos = 0;
-		for (int i = 0; i < b.length(); ++i) {
-			if ('+' == b[i]) {
-				pos = i+1;
-				break;
-			}
-		}
 
+// 		pos = 0;
+// 		for (int i = 0; i < b.length(); ++i) {
+// 			if ('+' == b[i]) {
+// 				pos = i+1;
+// 				break;
+// 			}
+// 		}
+
+		pos = find_position(b, '+');
 		tmp_str = b.substr(0, pos);
 		ss.str(tmp_str);
 		ss >> a2;

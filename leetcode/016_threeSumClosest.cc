@@ -45,7 +45,7 @@ public:
                 std::sort(nums.begin(), nums.end());
 
                 int res = 0;
-                int min_diff = 65536;
+                int min_diff = 65536;   // INT_MAX
                 for (int i = 0; i < nums.size()-2; ++i) {
                         for (int j = nums.size()-1; j > i+1; --j) {
                                 for (int k = i+1; k < j; ++k) {
