@@ -53,14 +53,6 @@ public:
 			return (a.empty() ? b : a);
 		}
 
-// 		int pos = 0;
-// 		for (int i = 0; i < a.length(); ++i) {
-// 			if ('+' == a[i]) {
-// 				pos = i+1;
-// 				break;
-// 			}
-// 		}
-
 		int pos = find_position(a, '+');
 		int a1, b1, a2, b2;
 		std::stringstream ss;
@@ -70,15 +62,6 @@ public:
 		tmp_str = a.substr(pos);
 		ss.str(tmp_str);
 		ss >>b1;
-
-
-// 		pos = 0;
-// 		for (int i = 0; i < b.length(); ++i) {
-// 			if ('+' == b[i]) {
-// 				pos = i+1;
-// 				break;
-// 			}
-// 		}
 
 		pos = find_position(b, '+');
 		tmp_str = b.substr(0, pos);

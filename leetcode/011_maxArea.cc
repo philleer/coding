@@ -94,7 +94,7 @@ std::vector<int> stringToIntegerVector(std::string input) {
 
 int main(int argc, char *argv[]) {
 	std::string line;
-	while (getline(std::cin, line)) {
+	while (std::getline(std::cin, line)) {
 		std::vector<int> height = stringToIntegerVector(line);
 		int ret = Solution().maxArea(height);
 		std::string out = std::to_string(ret);

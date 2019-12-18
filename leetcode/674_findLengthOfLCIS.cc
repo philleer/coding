@@ -43,15 +43,17 @@ public:
 		int maxLen = 1;
 		int i = 1;
 		for (; i < nums.size(); i++) {
-			if (nums[i] != '\0' && nums[i] > nums[i-1]) { len++; }
-			else {
+            		if (nums[i] != '\0' && nums[i] > nums[i-1]) {
+            			len++;
+            		} else {
 				if (len > maxLen) maxLen = len;
 				len = 1;
 			}
 		}
 
-		// when increasing continues till the end and jump out for-loop
-		// we need to set the maxLen to len of the last substring if possible
+        	// when increasing continues till the end and jump out
+        	// for-loop we need to set the maxLen to len of the last
+        	// substring if possible
 		if (i == nums.size() && len > maxLen) maxLen = len;
 
 		return maxLen;
@@ -75,8 +77,9 @@ public:
 		pair<int, int> p(0, 1);
 		int i = 1;
 		for (; i < str.length(); i++) {
-			if (str[i] != '\0' && str[i] > str[i-1]) len++;
-			else {
+			if (str[i] != '\0' && str[i] > str[i-1]) {
+				len++;
+			} else {
 				if (len > p.second) {
 					p.first = startIndex;
 					p.second = len;

@@ -1,37 +1,37 @@
-// The source is part of my coding practice, a lightweight C++
-// solution for leetcode program practice.
-//
-// For all of my code, after check it online by submit, I also compile
-// and run it by my offline IDE 
-// ===================================================================
-// ********* Microsoft Visual Studio 2010 when I use windows *********
-// *********           G++5.4.0 when I am on Linux           *********
-// ===================================================================
-//
-// If any question, feel free to send me an email
-// phillee2016@163.com
-// or just correct it via Pull Request
-
+/******************************************************************************
+ * The source is part of my coding practice, a lightweight C++ solution for
+ * leetcode program practice.
+ *
+ * For all of my code, after check it online by submit, I also compile and run
+ * it by my offline machine
+ * ============================================================================
+ * ////////////// Microsoft Visual Studio 2010 when I use windows /////////////
+ * //////////////           G++5.4.0 when I am on Linux           /////////////
+ * ============================================================================
+ *
+ * If any question, feel free to send me an email << phillee2016@163.com >>
+ * or just correct it via Pull Request or create an issue.
+ ******************************************************************************
+ */
 #include <string>
 #include <cstdio>
 
-using namespace std;
-
 class Solution {
 public:
-    /*==============================================================
-     * Description:	Given a string s, find the longest palindromic
-     * 			substring in s. You may assume the maximum
-     * 			length of s is 1000.
-     * Example 1:	Input: "babad"	Output: "bab"
-     * 			Note: "aba" is also a valid answer.
-     * Example 2:	Input: "cbbd"	Output: "bb"
-     *==============================================================
+    /*=========================================================================
+     * Description:	Given a string s, find the longest palindromic substring in
+     * 			s. You may assume the maximum	length of s is 1000.
+     *
+     * Example :
+     *      Input: "babad"	Output: "bab"
+     * 			Explination: "aba" is also a valid answer.
+     *
+     *      Input: "cbbd"	Output: "bb"
+     *=========================================================================
      */	
-    string longestPalindrome(string s) {
-        string res;
-        if (s.empty())
-            return res;
+    std::string longestPalindrome(std::string s) {
+        std::string res;
+        if (s.empty()) return res;
         
         int len = s.length();
         int tmpLen = 0, maxLen = 0;
@@ -47,8 +47,7 @@ public:
                         maxLen = tmpLen;
                         start = ii - jj;
                     }
-                }
-                else {
+                } else {
                     break;
                 }
             }
@@ -64,8 +63,7 @@ public:
                         maxLen = tmpLen;
                         start = i - j;
                     }
-                }
-                else {
+                } else {
                     break;
                 }
             }
@@ -74,18 +72,17 @@ public:
         res = s.substr(start, maxLen);
         // if there is no palindrome existing in the given string
         // then return the first character of s
-        if (res.empty())
-            res = s.substr(0, 1);
+        if (res.empty()) res = s.substr(0, 1);
             
         return res;
     }
 };
 
-int main(int argc, char **argv) {
-	string str1 = "babad";
-	string str2 = "cbbd";
-	string str3 = "abcda";
-	string str4 = "";
+int main(int argc, char *argv[]) {
+	std::string str1 = "babad";
+	std::string str2 = "cbbd";
+	std::string str3 = "abcda";
+	std::string str4 = "";
 	printf("the given string is shown as:\n");
 	printf("\tstr1 = %s\n", str1.c_str());
 	printf("\tstr2 = %s\n", str2.c_str());
@@ -93,7 +90,7 @@ int main(int argc, char **argv) {
 	printf("\tstr4 = %s\n", str4.c_str());
 
 	Solution solver;
-    string result = solver.longestPalindrome(str1);
+	std::string result = solver.longestPalindrome(str1);
 	printf("\nthe result substring is shown as:\n");
 	printf("\tresult = %s", result.c_str());
 
@@ -109,5 +106,5 @@ int main(int argc, char **argv) {
 	printf("\nthe result substring is shown as:\n");
 	printf("\tresult = %s", result.c_str());
 
-    return 0;
+	return 0;
 }
