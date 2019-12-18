@@ -79,8 +79,8 @@ private:
 
 public:
 	/*
-	* Initialize data structure here.
-	*/
+	 * Initialize data structure here.
+	 */
 	MyLinkedList() {
 		head = nullptr;
 		tail = nullptr;
