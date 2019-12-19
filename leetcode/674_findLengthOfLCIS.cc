@@ -109,7 +109,8 @@ int main(int argc, char *argv[]) {
 	cout << endl;
 	
 	Solution solver;
-	// print the length of longest continuous increasing subsequence
+	// print the length of longest continuous increasing
+	// subsequence
 	cout << solver.findLengthOfLCIS(vectorTest) << endl;
 	return 0;
 }
