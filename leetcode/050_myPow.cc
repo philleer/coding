@@ -18,6 +18,7 @@
 
 class Solution {
 public:
+	// 050.implement pow function
         /*=====================================================================
         * Description: Implement pow(x, n), which calculates x raised to the
         *       power n (xn).

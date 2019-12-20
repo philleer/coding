@@ -13,13 +13,13 @@
  * or just correct it via Pull Request or create an issue.
  ******************************************************************************
  */
-// 38. Count and Say
 #include <iostream>
 #include <vector>
 #include <string>
 
 class Solution {
 public:
+	// 38. Count and Say
 	/*=====================================================================
 	 * Description: The count-and-say sequence is the sequence of integers
 	 *	with the first five terms as following:
@@ -94,3 +94,4 @@ int main(int argc, const char *argv[]) {
 
 	return 0;
 }
+

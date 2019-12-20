@@ -13,13 +13,13 @@
  * or just correct it via Pull Request or create an issue.
  ******************************************************************************
  */
-// 22. Generate Parentheses
 #include <iostream>
 #include <vector>
 #include <string>
 
 class Solution {
 public:
+	// 22. Generate Parentheses
 	/*=====================================================================
 	 * Description: Given n pairs of parentheses, write a function to
 	 *	generate all combinations of well-formed parentheses.
@@ -59,3 +59,4 @@ int main(int argc, const char *argv[]) {
 
 	return 0;
 }
+

@@ -51,6 +51,9 @@ public:
 			}
 		}
 
+		// 数据结构map对其中的数据是按字母序进行排列的，abcd这样
+		// unordered_map与map稍有不同，它是按字母序和键值的综合顺序进行排列
+		// 不完全是按照abcd，还要根据第二个键值的大小
 		int index = 65536;
 		for (auto it = mp.begin(); it != mp.end(); ++it) {			
 			if ((it->second).second == 0 &&
@@ -98,3 +101,4 @@ int main(int argc, const char* argv[]) {
 	}
 	return 0;
 }
+

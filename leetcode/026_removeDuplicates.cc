@@ -13,12 +13,12 @@
  * or just correct it via Pull Request or create an issue.
  ******************************************************************************
  */
-// 26. Remove Duplicates from Sorted Array
 #include <iostream>
 #include <vector>
 
 class Solution {
 public:
+	// 26. Remove Duplicates from Sorted Array
 	/*=====================================================================
 	 * Description: Given a sorted array nums, remove the duplicates
 	 *	in-place such that each element appear only once and return the
@@ -81,3 +81,4 @@ int main(int argc, const char *argv[]) {
 
 	return 0;
 }
+
