@@ -23,10 +23,11 @@
 class Solution {
 public:
         // 169. Majority Element
-        /*====================================================================
+        /*=====================================================================
          * Description: Given an array of size n, find the majority element.
          *      The majority element is the element that appears more than n/2
          *      times.
+         *
          * Note:
          *      You may assume that the array is non-empty and the majority
          *      element always exist in the array.
@@ -34,7 +35,7 @@ public:
          * Example:
          *      Input: [3,2,3]  Output: 3
          *      Input: [2,2,1,1,1,2,2]  Output: 2
-         *====================================================================
+         *=====================================================================
          */
         int majorityElement(vector<int>& nums) {
                 if (nums.empty()) return 0;
@@ -61,7 +62,7 @@ public:
         }
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, char const *argv[]) {
         std::string line;
         while (std::getline(std::cin, line)) {
                 int num;

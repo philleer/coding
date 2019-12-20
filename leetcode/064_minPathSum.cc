@@ -34,7 +34,7 @@ public:
 	 *	Explanation: Because the path 1→3→1→1→1 minimizes the sum.
 	 *=====================================================================
 	 */
-	int minPathSum(vector<vector<int>>& grid) {
+	int minPathSum(std::vector<std::vector<int>>& grid) {
 		if (grid.empty()) return 0;
 
 		int m = grid.size(), n = grid[0].size();
@@ -57,7 +57,7 @@ public:
 	}
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, const char *argv[]) {
 	std::string line;
 	while (std::getline(std::cin, line)) {
 		std::stringstream ss;

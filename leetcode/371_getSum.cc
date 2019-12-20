@@ -26,11 +26,9 @@ public:
 	 *	not allowed to use the operator + and -.
 	 *
 	 * Example:
-	 *	Input: a = 1, b = 2
-	 *	Output: 3
+	 *	Input: a = 1, b = 2 	Output: 3
 	 *
-	 *	Input: a = -2, b = 3
-	 *	Output: 1
+	 *	Input: a = -2, b = 3 	Output: 1
 	 *=====================================================================
 	 */
 	int getSum(int a, int b) {

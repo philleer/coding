@@ -13,61 +13,60 @@
  * or just correct it via Pull Request or create an issue.
  ******************************************************************************
  */
-// 46. Permutations
 #include <iostream>
 #include <vector>
 
 class Solution {
 public:
-	/*=========================================================================
-	 * Description: Given a collection of distinct integers, return all possible
-	 *			permutations.
+        // 46. Permutations
+	/*=====================================================================
+	 * Description: Given a collection of distinct integers, return all
+         *      possible permutations.
+         *
 	 * Example:
 	 *	Input: [1,2,3]
 	 *	Output: [[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1] ]
-	 *=========================================================================
+	 *=====================================================================
 	 */
-    std::vector<std::vector<int>> permute(std::vector<int> &nums) {
-        std::vector<std::vector<int>> res;
-        if (nums.empty()) return res;
-        
-        int n = nums.size();
-        std::vector<int> tmp;
-        std::vector<int> flag(n, -1);
-        helper(flag, tmp, nums, res);
-        
-        return res;
-    }
-    
-    void helper(std::vector<int> &flag, std::vector<int> &tmp,
-    	std::vector<int> &nums, std::vector<std::vector<int>> &res) {
-        int n = nums.size();
-        if (tmp.size() == n) {
-            res.push_back(tmp);
-            return ;
-        }
-        
-        for (int i = 0; i < n; ++i) {
-            if (flag[i] != 1) {
-                flag[i] = 1;
-                tmp.push_back(nums[i]);
+        std::vector<std::vector<int>> permute(std::vector<int> &nums) {
+                std::vector<std::vector<int>> res;
+                if (nums.empty()) return res;
+
+                int n = nums.size();
+                std::vector<int> tmp;
+                std::vector<int> flag(n, -1);
                 helper(flag, tmp, nums, res);
-                flag[i] = 0;
-                tmp.pop_back();
-            }
+
+                return res;
         }
-    }
+    
+        void helper(std::vector<int> &flag, std::vector<int> &tmp,
+        	std::vector<int> &nums, std::vector<std::vector<int>> &res) {
+                int n = nums.size();
+                if (tmp.size() == n) {
+                        res.push_back(tmp);
+                        return ;
+                }
+
+                for (int i = 0; i < n; ++i) {
+                        if (flag[i] != 1) {
+                                flag[i] = 1;
+                                tmp.push_back(nums[i]);
+                                helper(flag, tmp, nums, res);
+                                flag[i] = 0;
+                                tmp.pop_back();
+                        }
+                }
+        }
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, const char *argv[]) {
 	std::vector<int> nums{1, 2, 3};
-	Solution solver;
-	for (auto &num : nums) {
-		std::cout << num << " ";
-	}
+	
+	for (auto &num : nums) std::cout << num << " ";
 	std::cout << std::endl;
 
-	std::vector<std::vector<int>> result = solver.permute(nums);
+	std::vector<std::vector<int>> result = Solution().permute(nums);
 	std::cout << "The permutations are: "<< std::endl;
 	for (int i = 0; i < result.size(); ++i) {
 		for (int j = 0; j < result[i].size(); ++j) {
@@ -80,4 +79,3 @@ int main(int argc, char *argv[]) {
 
 	return 0;
 }
-

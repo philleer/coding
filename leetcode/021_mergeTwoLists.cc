@@ -16,64 +16,63 @@
 #include <iostream>
 #include <csdtio>
 
-using namespace std;
-
 /**
  * Definition for singly-linked list.
  */
 struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+	int val;
+	ListNode *next;
+	ListNode(int x) : val(x), next(NULL) {}
 };
 
 class Solution {
 public:
-	/*===========================================================================
+	/*===================================================================== 
 	 * Difficuty level:	Easy
-	 * Desciption: 	Merge two sorted linked lists and return a new list. The new
-	 *	list should be made by splicing together the nodes of the first 2
-	 *	lists.
-	 * Example:
-	 *    Input: 1->2->4, 1->3->4	   	Output: 1->1->2->3->4->4
-	 *===========================================================================
+	 * Desciption: 	Merge two sorted linked lists and return a new list.
+	 * 	The new list should be made by splicing together the nodes of
+	 * 	the first two lists.
+	 * Example :
+	 * 	Input: 1->2->4, 1->3->4
+	 *	Output: 1->1->2->3->4->4
+	 *=====================================================================
 	 */
-    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-        if ((l1 == nullptr) && (l2 == nullptr)) return nullptr;
-        else if ((l1 == nullptr) && (l2 != nullptr)) return l2;
-        else if ((l1 != nullptr) && (l2 == nullptr)) return l1;
-        else {
-            ListNode *res = new ListNode(0);
-            ListNode *pNode = res;
-            ListNode *ptr_l1 = l1;
-            ListNode *ptr_l2 = l2;
-            
-            while (l1 != nullptr && l2 != nullptr) {
-                if (l1->val > l2->val) {
-                    res->next = new ListNode(l2->val);
-                    res = res->next;
-                    l2 = l2->next;
-                } else {
-                    res->next = new ListNode(l1->val);
-                    res = res->next;
-                    l1 = l1->next;
-                }
-            }
-            
-            while(l1 != nullptr) {
-                res->next = new ListNode(l1->val);
-                res = res->next;
-                l1 = l1->next;
-            }
-            
-            while(l2 != nullptr) {
-                res->next = new ListNode(l2->val);
-                res = res->next;
-                l2 = l2->next;
-            }
-            return pNode->next;
-        }
-    }
+	ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+		if ((l1 == nullptr) && (l2 == nullptr)) return nullptr;
+		else if ((l1 == nullptr) && (l2 != nullptr)) return l2;
+		else if ((l1 != nullptr) && (l2 == nullptr)) return l1;
+		else {
+			ListNode *res = new ListNode(0);
+			ListNode *pNode = res;
+			ListNode *ptr_l1 = l1;
+			ListNode *ptr_l2 = l2;
+			
+			while (l1 != nullptr && l2 != nullptr) {
+				if (l1->val > l2->val) {
+					res->next = new ListNode(l2->val);
+					res = res->next;
+					l2 = l2->next;
+				} else {
+					res->next = new ListNode(l1->val);
+					res = res->next;
+					l1 = l1->next;
+				}
+			}
+			
+			while(l1 != nullptr) {
+				res->next = new ListNode(l1->val);
+				res = res->next;
+				l1 = l1->next;
+			}
+			
+			while(l2 != nullptr) {
+				res->next = new ListNode(l2->val);
+				res = res->next;
+				l2 = l2->next;
+			}
+			return pNode->next;
+		}
+	}
 };
 
 int main(int argc, const char* argv[]) {

@@ -54,11 +54,9 @@ public:
 	}
 };
 
-int stringToInteger(std::string input) {
-	return std::stoi(input);
-}
+int stringToInteger(std::string input) { return std::stoi(input); }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char const *argv[]) {
 	std::string line;
 	while (std::getline(std::cin, line)) {
 		int n = stringToInteger(line);

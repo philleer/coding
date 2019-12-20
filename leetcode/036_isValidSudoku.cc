@@ -134,9 +134,13 @@ public:
                                 char tmp = board[i][j];
                                 int idx =  3 * (i / 3) + j / 3;
                                 if (tmp >= '1' && tmp <= '9') {
-                                        if (horizen[i].find(tmp) != horizen[i].end() ||
-                                            vertical[j].find(tmp) != vertical[j].end() ||
-                                            block[idx].find(tmp) != block[idx].end()) {
+                                        if (horizen[i].find(tmp) !=
+                                                horizen[i].end() ||
+                                            vertical[j].find(tmp) !=
+                                                vertical[j].end() ||
+                                            block[idx].find(tmp) !=
+                                                block[idx].end())
+                                        {
                                                 return false;
                                         }
                                         horizen[i].insert(tmp);
@@ -152,7 +156,7 @@ public:
         }
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, const char *argv[]) {
         std::vector<std::vector<char>> board {
                 {"5","3",".",".","7",".",".",".","."},
                 {"6",".",".","1","9","5",".",".","."},
@@ -171,7 +175,8 @@ int main(int argc, char *argv[]) {
                 std::cout << std::endl;
         }
         std::cout << std::endl;
-        std::cout << (isValidSudoku(board) ? "true" : "false") << std::endl;
+        std::cout << (Solution().isValidSudoku(board) ? "true" : "false")
+                << std::endl;
 
         return 0;
 }

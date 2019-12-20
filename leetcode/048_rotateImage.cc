@@ -24,6 +24,7 @@ public:
 	/*=====================================================================
 	 * Description: You are given an n x n 2D matrix representing an image.
 	 *	Rotate the image by 90 degrees (clockwise).
+	 *
 	 * Note:
 	 *	You have to rotate the image in-place, which means you have to
 	 *	modify the input 2D matrix directly. DO NOT allocate another 2D
@@ -72,7 +73,7 @@ void printMatrix(std::vector<std::vector<int>> mat) {
 	std::cout << std::endl;
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, const char *argv[]) {
 	std::string line;
 	while (std::getline(std::cin, line)) {
 		std::stringstream ss;
@@ -93,4 +94,3 @@ int main(int argc, char *argv[]) {
 
 	return 0;
 }
-

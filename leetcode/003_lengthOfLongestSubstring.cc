@@ -13,7 +13,6 @@
  * or just correct it via Pull Request or create an issue.
  ******************************************************************************
  */
-// 3. Longest Substring Without Repeating Characters
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -21,23 +20,22 @@
 
 class Solution {
 public:
-	/*=========================================================================
-	 * Description:  Given a string, find the length of the longest substring
-	 *				 without repeating characters.
-	 * Example: Input: "abcabcbb"
-	 *	    Output: 3
-	 *	    Explanation: The answer is "abc", with the length of 3
+	// 3. Longest Substring Without Repeating Characters
+	/*=====================================================================
+	 * Description:  Given a string, find the length of the longest
+	 * 	substring without repeating characters.
+	 * Example:
+	 * 	Input: "abcabcbb"	Output: 3
+	 *	Explanation: The answer is "abc", with the length of 3
 	 *	    
-	 *	    Input: "bbbbb"
-	 *	    Output: 1
-	 *	    Explanation: The answer is "b", with the length of 1
+	 *	Input: "bbbbb"		Output: 1
+	 *	Explanation: The answer is "b", with the length of 1
 	 *	    
-	 *	    Input: "pwwkew"
-	 *	    Output: 3
-	 *	    Explanation: The answer is "wke", with the length of 3. Note
-	 *	    that the answer must be a substring, "pwke" is a subsequence
-	 *	    and not a substring.
-	 *=========================================================================
+	 *	Input: "pwwkew"		Output: 3
+	 *	Explanation: The answer is "wke", with the length of 3. Note
+	 *	that the answer must be a substring, "pwke" is a subsequence
+	 *	and not a substring.
+	 *=====================================================================
 	 */
 	int lengthOfLongestSubstring(std::string s) {
 		if (s.empty()) return 0;
@@ -51,7 +49,7 @@ public:
 				umRes.clear();
 			} else {
 				umRes.insert({s[i], i+1});
-				maxLen = max((int)umRes.size(), maxLen);
+				maxLen = std::max((int)umRes.size(), maxLen);
 			}
 		}
 
@@ -59,7 +57,7 @@ public:
 	}
 };
 
-int main (int argc, char *argv[]) {
+int main (int argc, const char *argv[]) {
 	std::string s = "pwwkew";
 	Solution solver;
 	int len = solver.lengthOfLongestSubstring(s);
@@ -68,5 +66,3 @@ int main (int argc, char *argv[]) {
 
 	return 0;
 }
-
-// ====== End Of File ====== //

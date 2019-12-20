@@ -49,17 +49,7 @@ public:
 	}
 	
 	std::string complexNumberMultiply(std::string a, std::string b) {
-		if (a.empty() || b.empty()) {
-			return (a.empty() ? b : a);
-		}
-
-// 		int pos = 0;
-// 		for (int i = 0; i < a.length(); ++i) {
-// 			if ('+' == a[i]) {
-// 				pos = i+1;
-// 				break;
-// 			}
-// 		}
+		if (a.empty() || b.empty()) return (a.empty() ? b : a);
 
 		int pos = find_position(a, '+');
 		int a1, b1, a2, b2;
@@ -70,15 +60,6 @@ public:
 		tmp_str = a.substr(pos);
 		ss.str(tmp_str);
 		ss >>b1;
-
-
-// 		pos = 0;
-// 		for (int i = 0; i < b.length(); ++i) {
-// 			if ('+' == b[i]) {
-// 				pos = i+1;
-// 				break;
-// 			}
-// 		}
 
 		pos = find_position(b, '+');
 		tmp_str = b.substr(0, pos);
@@ -120,15 +101,15 @@ std::string stringToString(std::string input) {
 	return result;
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char const *argv[]) {
 	std::string line;
 	while (std::getline(std::cin, line)) {
 		std::string a = stringToString(line);
 		std::getline(std::cin, line);
 		std::string b = stringToString(line);
 
-		std::string ret = Solution().complexNumberMultiply(a, b);
-		std::cout << ret << std::endl;
+		std::cout << Solution().complexNumberMultiply(a, b)
+			<< std::endl;
 	}
 	return 0;
 }

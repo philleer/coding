@@ -62,15 +62,17 @@ public:
 	}
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, char const *argv[]) {
 	std::string line;
 	while (std::getline(std::cin, line)) {
 		std::stringstream ss;
 		ss.str(line);
-		int tmp;
+		char tmp;
 		std::vector<int> nums;
 		// 输入时保持用逗号隔开的格式
-		while(std::getline(ss, tmp, ',')) nums.push_back(tmp);
+		while(std::getline(ss, tmp, ',')) {
+			nums.push_back(std::stoi(tmp));
+		}
 
 		for (auto &num : nums) std::cout << num << " ";
 		std::cout << std::endl;

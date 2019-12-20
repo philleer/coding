@@ -6,7 +6,7 @@
  * it by my offline machine
  * ============================================================================
  * ////////////// Microsoft Visual Studio 2010 when I use windows /////////////
- * //////////////	    G++5.4.0 when I am on Linux           /////////////
+ * //////////////           G++5.4.0 when I am on Linux           /////////////
  * ============================================================================
  *
  * If any question, feel free to send me an email << phillee2016@163.com >>
@@ -52,11 +52,9 @@ public:
 	}
 };
 
-int main(int argc, char *argv[]) {
-	Solution solver;
-
+int main(int argc, char const *argv[]) {
 	int num = 5;
-	int ret = solver.findComplement(num);
+	int ret = Solution().findComplement(num);
 	std::cout << "original number: " << num << std::endl;
 	std::cout << "the complement number: " << ret << std::endl;
 

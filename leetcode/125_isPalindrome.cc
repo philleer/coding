@@ -21,7 +21,7 @@
 class Solution {
 public:
         // 125. Valid Palindrome
-        /*====================================================================
+        /*=====================================================================
          * Description: Given a string, determine if it is a palindrome,
          *      considering only alphanumeric characters and ignoring cases.
          * Note:
@@ -32,7 +32,7 @@ public:
          *      Input: "A man, a plan, a canal: Panama" Output: true
          *
          *      Input: "race a car"     Output: false
-         *====================================================================
+         *=====================================================================
          */
         bool isPalindrome(std::string s) {
                 if (s.empty()) return true;
@@ -43,12 +43,12 @@ public:
                 int low = 0;
                 int high = str.length()-1;
                 while (low < high) {
-                    if (str[low]==str[high]) {
-                        ++low;
-                        --high;
-                    } else {
-                        return false;
-                    }
+                        if (str[low]==str[high]) {
+                                ++low;
+                                --high;
+                        } else {
+                                return false;
+                        }
                 }
                 
                 return true;
@@ -95,17 +95,16 @@ std::string stringToString(std::string input) {
 }
 
 std::string boolToString(bool input) {
-        return input ? "True" : "False";
+        return (input ? "True" : "False");
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char const *argv[]) {
         std::string line;
         while (std::getline(std::cin, line)) {
                 std::string s = stringToString(line);
 
                 bool ret = Solution().isPalindrome(s);
-                std::string out = boolToString(ret);
-                std::cout << out << std::endl;
+                std::cout << boolToString(ret) << std::endl;
         }
         return 0;
 }

@@ -15,8 +15,8 @@
  */
 #include <iostream>
 #include <vector>
-#include <string>	// std::string::begin, std::string::end, std::string::erase
-					// std::stoi
+#include <string> // std::string::begin, std::string::end, std::string::erase
+		  // std::stoi
 #include <cctype>	// isspace
 #include <algorithm>	// std::max, std::min, std::sort
 #include <sstream>	// std::stringstream
@@ -24,16 +24,16 @@
 class Solution {
 public:
 	// 15. 3Sum
-	/*=========================================================================
-	 * Description: Given an array nums of n integers, are there elements a, b,
-	 *	c in nums such that a+b+c = 0 ? Find all unique triplets in the array
-	 *	which gives the sum of zero.
+	/*=====================================================================
+	 * Description: Given an array nums of n integers, are there elements
+	 * 	a, b, c in nums such that a+b+c = 0 ? Find all unique triplets
+	 * 	in the array which gives the sum of zero.
 	 * Note: The solution set must not contain duplicate triplets.
 	 * 
 	 * Example:
 	 *	Given array nums = [-1, 0, 1, 2, -1, -4]
 	 *	A solution set is: [[-1, 0, 1], [-1, -1, 2]]
-	 *=========================================================================
+	 *=====================================================================
 	 */
 	std::vector<std::vector<int>> threeSum1(std::vector<int>& nums) {
 		std::vector<std::vector<int>> res;
@@ -57,15 +57,20 @@ public:
 			while (low < high) {
 				if (nums[low]+nums[high] < sum) {
 					++low;
-					while (low < size-1 && nums[low-1]==nums[low]) ++low;
+					while (low < size-1 &&
+					       nums[low-1]==nums[low]) ++low;
 				} else if (nums[low]+nums[high] > sum) {
 					--high;
-					while (nums[high+1]==nums[high]) --high;
+					while (nums[high+1]==nums[high])
+						--high;
 				} else {
-					std::vector<int> tmp{nums[i], nums[low], nums[high]};
+					std::vector<int> tmp{nums[i],
+							     nums[low],
+							     nums[high]};
 					res.push_back(tmp);
 					--high;
-					while (nums[high+1]==nums[high]) --high;
+					while (nums[high+1]==nums[high])
+						--high;
 				}
 			}
 		}
@@ -89,14 +94,18 @@ public:
 				int sum = nums[i]+nums[low]+nums[high];
 				if (sum < 0) {
 					++low;
-					while (high > low && nums[low-1]==nums[low]) ++low;
+					while (high > low &&
+					       nums[low-1]==nums[low]) ++low;
 				} else {
 					if (0 == sum) {
-						std::vector<int> tmp{nums[i], nums[low], nums[high]};
+						std::vector<int> tmp{nums[i],
+								     nums[low],
+								     nums[high]};
 						res.push_back(tmp);
 					}
 					--high;
-					while (high > low && nums[high+1]==nums[high]) --high;
+					while (high > low &&
+					       nums[high+1]==nums[high]) --high;
 				}
 			}
 		}
@@ -105,20 +114,19 @@ public:
 	}
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, const char *argv[]) {
 	std::string line;
 	// -1, 0, 1, 2, -1, -4
 	while (std::getline(std::cin, line)) {
 		std::stringstream ss;
 		ss.str(line);
-		int tmp;
+		char tmp;
 		std::vector<int> nums;
 		while (std::getline(ss, tmp, ',')) {
-			nums.push_back(tmp);
+			nums.push_back(std::atoi(tmp));
 		}
 
 		std::vector<std::vector<int>> res = Solution().threeSum(nums);
-
 		for (int i = 0; i < res.size(); ++i) {
 			for (int j = 0; j < res[i].size(); ++j) {
 				std::cout << res << " ";

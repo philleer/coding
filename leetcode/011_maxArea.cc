@@ -67,14 +67,14 @@ public:
 
 void trimLeftTrailingSpaces(std::string &input) {
 	input.erase(input.begin(), find_if(input.begin(), input.end(),
-			[](int ch) { return !isspace(ch);}
-		));
+		[](int ch) { return !isspace(ch);}
+	));
 }
 
 void trimRightTrailingSpaces(std::string &input) {
 	input.erase(find_if(input.rbegin(), input.rend(), [](int ch) {
-			return !isspace(ch);
-		}).base(), input.end());
+		return !isspace(ch);
+	}).base(), input.end());
 }
 
 std::vector<int> stringToIntegerVector(std::string input) {
@@ -92,7 +92,7 @@ std::vector<int> stringToIntegerVector(std::string input) {
 	return output;
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, const char *argv[]) {
 	std::string line;
 	while (std::getline(std::cin, line)) {
 		std::vector<int> height = stringToIntegerVector(line);

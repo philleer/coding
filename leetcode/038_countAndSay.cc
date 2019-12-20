@@ -20,52 +20,53 @@
 
 class Solution {
 public:
-	/*=========================================================================
-	 * Description: The count-and-say sequence is the sequence of integers with
-	 *	the first five terms as following:
+	/*=====================================================================
+	 * Description: The count-and-say sequence is the sequence of integers
+	 *	with the first five terms as following:
 	 *		1.     1
 	 *		2.     11
 	 *		3.     21
 	 *		4.     1211
 	 *		5.     111221
-	 * Note: the (i+1)th sequence is the "count and say" of the ith sequence!
+	 * Note:
+	 *	the (i+1)th sequence is the "count and say" of the ith sequence!
+	 *
 	 * Example:
 	 * 		Input: 1 	Output: "1"
 	 *		Input: 4 	Output: "1211"
-	 *=========================================================================
+	 *=====================================================================
 	 */
-    std::string countAndSay(int n) {
-        if (n < 1 || n > 30)
-            return "";
-        
-        int k = 1;
-        std::string result("1");
-        while (k++ < n) {
-            int count = 1;
-            std::string s;
-            for (int i = 0; i < result.size(); ++i) {
-                if (0 != i) {
-                    if (result[i] == result[i-1]) {
-                        ++count;
-                    } else {
-                        s.push_back(count+'0');
-                        s.push_back(result[i-1]);
-                        count = 1;
-                    }
-                }
+	std::string countAndSay(int n) {
+		if (n < 1 || n > 30) return "";
 
-                if (result.size()-1 == i) {
-                    s.push_back(count+'0');
-                    s.push_back(result[i]);
-                }
-            }
-            result = s;
-        }
-        
-        return result;
-    }
+		int k = 1;
+		std::string result("1");
+		while (k++ < n) {
+			int count = 1;
+			std::string s;
+			for (int i = 0; i < result.size(); ++i) {
+				if (0 != i) {
+					if (result[i] == result[i-1]) {
+						++count;
+					} else {
+						s.push_back(count+'0');
+						s.push_back(result[i-1]);
+						count = 1;
+					}
+				}
 
-    std::string countAndSayRecursively1(int n) {
+				if (result.size()-1 == i) {
+					s.push_back(count+'0');
+					s.push_back(result[i]);
+				}
+			}
+			result = s;
+		}
+
+		return result;
+	}
+
+	std::string countAndSayRecursively1(int n) {
 		if (n == 1)  return "1";
 		
 		int count = 1;
@@ -86,13 +87,10 @@ public:
 	}
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, const char *argv[]) {
 	int n = 4;
-	Solution solver;
 	std::cout << "The " << n << "th sequence is: "
-			<< solver.countAndSay(n)
-			<< std::endl;
+		<< Solution().countAndSay(n) << std::endl;
 
 	return 0;
 }
-

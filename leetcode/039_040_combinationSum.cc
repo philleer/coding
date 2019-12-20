@@ -119,7 +119,7 @@ public:
 	}
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, const char *argv[]) {
 	std::vector<int> candidates1{2, 3, 5};
 	std::vector<int> candidates2{10, 1, 2, 7, 6, 1, 5};
 	int target = 8;
@@ -159,4 +159,3 @@ int main(int argc, char *argv[]) {
 
 	return 0;
 }
-

@@ -57,7 +57,7 @@ public:
 	}
 };
 
-int main (int argc, char *argv[]) {
+int main (int argc, const char *argv[]) {
 	Solution solver;
 
 	int x1 = 121;
