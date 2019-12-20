@@ -98,7 +98,6 @@ public:
 	}
 };
 
-
 void trimLeftTrailingSpaces(std::string &input) {
 	input.erase(input.begin(), std::find_if(input.begin(), input.end(),
 		[](int ch) { return !isspace(ch); }
@@ -133,7 +132,7 @@ TreeNode* stringToTreeNode(std::string input) {
 		if (!std::getline(ss, item, ',')) break;
 		trimLeftTrailingSpaces(item);
 		if (item != "null") {
-			int leftNumber = stoi(item);
+			int leftNumber = std::stoi(item);
 			node->left = new TreeNode(leftNumber);
 			nodeQueue.push(node->left);
 		}
@@ -141,7 +140,7 @@ TreeNode* stringToTreeNode(std::string input) {
 		if (!std::getline(ss, item, ',')) break;
 		trimLeftTrailingSpaces(item);
 		if (item != "null") {
-			int rightNumber = stoi(item);
+			int rightNumber = std::stoi(item);
 			node->right = new TreeNode(rightNumber);
 			nodeQueue.push(node->right);
 		}
@@ -157,4 +156,3 @@ int main(int argc, const char* argv[]) {
 	}
 	return 0;
 }
-

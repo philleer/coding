@@ -22,18 +22,21 @@ class Solution {
 public:
 	// 51. N-Queens
 	// 52. N-Queens II
-	/*=========================================================================
-	 * Description: The n-queens puzzle is the problem of placing n queens on
-	 *	an n×n chessboard such that no two queens attack each other.
-	 *	Given an integer n, return all distinct solutions to the n-queens
-	 *	puzzle. Each solution contains a distinct board configuration of
-	 *	the n-queens' placement, where 'Q' and '.' both indicate a queen
-	 *	and an empty space respectively.
+	/*=====================================================================
+	 * Description: The n-queens puzzle is the problem of placing n queens
+	 *	on an n×n chessboard such that no two queens attack each other.
+	 *	Given an integer n, return all distinct solutions to the
+	 *	n-queens puzzle. Each solution contains a distinct board
+	 *	configuration of the n-queens' placement, where 'Q' and '.'
+	 *	both indicate a queen and an empty space respectively.
+	 *
 	 * Example:
 	 *	Input: 4
-	 *	Output: [[".Q..","...Q","Q...","..Q."], ["..Q.","Q...","...Q",".Q.."]]
-	 * Explanation: There exist two distinct solutions to the 4-queens puzzle.
-	 *=========================================================================
+	 *	Output: [[".Q..","...Q","Q...","..Q."],
+	 *		 ["..Q.","Q...","...Q",".Q.."]]
+	 *	Explanation: There exist two distinct solutions to the 4-queens
+	 *	puzzle.
+	 *=====================================================================
 	 */
 	std::vector<std::vector<std::string>> solveNQueens(int n) {
 		std::vector<std::vector<std::string>> ret;
@@ -77,33 +80,40 @@ public:
 
 	bool check(int row, int col, std::vector<int> &result) {
 		for (int i = 0; i < result.size(); ++i) {
-			if (col == result[i] || std::abs(result[i]-col) == row - i)
+			if (col == result[i] ||
+			    std::abs(result[i]-col) == row - i)
+			{
 				return false;
+			}
 		}
 		return true;
 	}
 
-	/*=========================================================================
-	 * Description: This problem returns the number of distinct solutions to
-	 *	the n-queens puzzle.
+	/*=====================================================================
+	 * Description: This problem returns the number of distinct solutions
+	 *	to the n-queens puzzle.
+	 *
 	 * Example:
-	 *	Input: 4
-	 *	Output: 2
-	 *  Explanation: There exist two distinct solutions to the 4-queens puzzle.
-	 *			[[".Q..","...Q","Q...","..Q."], ["..Q.","Q...","...Q",".Q.."]]
-	 *=========================================================================
+	 *	Input: 4 	Output: 2
+	 *	Explanation: There exist two distinct solutions to the 4-queens
+	 *	puzzle.
+	 *	[[".Q..","...Q","Q...","..Q."], ["..Q.","Q...","...Q",".Q.."]]
+	 *=====================================================================
 	 */
-    int totalNQueens(int n) {
-        std::vector<std::vector<int>> solutions;
-		if (1 == n)	return 1;
-        if (n <= 0 || (n > 1 && n < 4)) return 0;
+	int totalNQueens(int n) {
+		std::vector<std::vector<int>> solutions;
+		if (1 == n) return 1;
+		if (n <= 0 || (n > 1 && n < 4)) return 0;
 		
 		std::vector<int> result;
 		nQueenHelper(result, solutions, n, 0);
 		return solutions.size();
-    }
+	}
     
-    void nQueenHelper(std::vector<int> &result, std::vector<std::vector<int>> &solutions, int n, int row) {
+	void nQueenHelper(std::vector<int> &result,
+    			  std::vector<std::vector<int>> &solutions,
+    			  int n, int row)
+	{
 		if (row >= n) {
 			// Replace the display commands in nQueen function
 			solutions.push_back(result);
@@ -111,7 +121,8 @@ public:
 		}
 		
 		for (int i = 0; i < n; ++i) {
-			// check function is still the same with the previous solution
+			// check function is still the same with the
+			// previous solution
 			if (check(row, i, result)) {
 				result.push_back(i);
 				nQueenHelper(result, solutions, n, row+1);
@@ -129,8 +140,10 @@ public:
 		visualize(solutions);
 	}
 
-	void nQueenBit(int k, int ld, int rd, std::vector<int> &result,
-		std::vector<std::vector<int>> &solutions, const int max)
+	void nQueenBit(int k, int ld, int rd,
+		std::vector<int> &result,
+		std::vector<std::vector<int>> &solutions,
+		const int max)
 	{
 		if (k == max) {
 			solutions.push_back(result);
@@ -145,7 +158,8 @@ public:
 			int p = pos & (~pos+1);
 			pos -= p;
 			result[index] = (p==1 ? 0 : 1+(int)log2(p>>1));
-			nQueenBit(k | p, (ld | p) << 1, (rd | p) >> 1, result, solutions, max);
+			nQueenBit(k | p, (ld | p) << 1, (rd | p) >> 1,
+				  result, solutions, max);
 		}
 	}
 
@@ -159,31 +173,31 @@ public:
 	}
 
 	void visualize(std::vector<std::vector<int>> &solutions) {
-        int n = solutions.size();
-        for (int r = 0; r < n; ++r) {
-            int l = solutions[r].size();
-            for (int c = 0; c < l; ++c) std::cout << solutions[r][c] << " ";
-            std::cout<< std::endl;
+		int n = solutions.size();
+		for (int r = 0; r < n; ++r) {
+			int l = solutions[r].size();
+			for (int c = 0; c < l; ++c) std::cout << solutions[r][c] << " ";
+			std::cout<< std::endl;
 
-            for (int c = 0; c < l; ++c) {
-                int pos = solutions[r][c];
-                for (int i = 0; i < l; ++i) {
-                    if (i == pos) std::cout << "Q ";
-                    else std::cout << "* ";
-                }
-                std::cout << std::endl;
-            }
-            std::cout << std::endl;
-        }
+			for (int c = 0; c < l; ++c) {
+				int pos = solutions[r][c];
+				for (int i = 0; i < l; ++i) {
+					if (i == pos) std::cout << "Q ";
+					else std::cout << "* ";
+				}
+				std::cout << std::endl;
+			}
+			std::cout << std::endl;
+		}
 
-        std::cout << "Total solutions: " << solutions.size() << std::endl;
-    }
+		std::cout << "Total solutions: " << solutions.size() << std::endl;
+	}
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, const char *argv[]) {
 	int n = 4;
-	Solution solver;
-	std::vector<std::vector<std::string>> strret = solver.solveNQueens(n);
+	std::vector<std::vector<std::string>> strret =
+		Solution().solveNQueens(n);
 	std::cout << "The results are: "<< std::endl;
 	for (int i = 0; i < strret.size(); ++i) {
 		for (int j = 0; j < strret[i].size(); ++j) {

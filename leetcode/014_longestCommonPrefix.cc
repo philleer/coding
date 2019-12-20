@@ -14,18 +14,19 @@
  ******************************************************************************
  */
 #include <iostream>
-#include <sstream>	// std::stringstream
-#include <string>	// std::string::begin, std::string::end, std::string::erase
-			// std::stoi
-#include <algorithm>	// std::max, std::min
+#include <sstream> // std::stringstream
+#include <string>  // std::string::begin, std::string::end, std::string::erase
+		   // std::stoi
+#include <algorithm> // std::max, std::min
 #include <vector>
 
 class Solution {
 public:
 	// 14. Longest Common Prefix
-	/*=========================================================================
-	 * Description: Write a function to find the longest common prefix string
-	 *	amongst an array of strings. If there is no common prefix, return "".
+	/*=====================================================================
+	 * Description: Write a function to find the longest common prefix
+	 * 	string amongst an array of strings. If there is no common
+	 * 	prefix, return "".
 	 * Note: All given inputs are in lowercase letters a-z.
 	 * 
 	 * Example:
@@ -33,7 +34,7 @@ public:
 	 *
 	 *	Input: ["dog","racecar","car"] 		Output: ""
 	 *	Explanation: There is no common prefix among the input strings.
-	 *=========================================================================
+	 *=====================================================================
 	 */
 	std::string longestCommonPrefix1(std::vector<std::string>& strs) {
 		if (strs.empty()) return "";
@@ -49,9 +50,11 @@ public:
 		for (int i = 0; i < strs.size(); ++i) {
 			if (i != index) {
 				int tmp = 0, maxlen = 0;
-				for (int j = 0; j < strs[index].length(); ++j) {
-					if (j < strs[i].size() && strs[i][j] == strs[index][j]) {
-						maxlen = std::max(++tmp, maxlen);
+				for (int j=0; j < strs[index].length(); ++j) {
+					if (j < strs[i].size() &&
+					    strs[i][j] == strs[index][j]) {
+						maxlen = std::max(++tmp,
+								  maxlen);
 					} else {
 						break;
 					}
@@ -68,7 +71,8 @@ public:
 		
 		std::sort(strs.begin(), strs.end());
 		std::string common = strs[0];
-		int len = std::min(common.length(), strs[strs.size()-1].length());
+		int len = std::min(common.length(),
+				   strs[strs.size()-1].length());
 		for (int j = 0; j < len; ++j) {
 			if (strs[strs.size()-1][j] != common[j]) {
 				common[j] = '\0';
@@ -80,7 +84,7 @@ public:
 	}
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, const char *argv[]) {
 	std::string line;
 	while (std::getline(std::cin, line)) {
 		std::stringstream ss;

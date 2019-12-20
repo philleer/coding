@@ -19,6 +19,7 @@
 #include <vector>
 #include <stack>
 #include <queue>
+#include <cctype>
 
 /**
  * Definition for a binary tree node.
@@ -92,9 +93,9 @@ public:
 
 // 下面的几个函数均为Leetcode官方测试代码中的实现，用于Debug，非常值得借鉴
 void trimLeftTrailingSpaces(std::string &input) {
-	input.erase(input.begin(), std::find_if(input.begin(), input.end(), [](int ch) {
-		return !isspace(ch);
-	}));
+	input.erase(input.begin(), std::find_if(input.begin(), input.end(),
+		[](int ch) { return !isspace(ch); }
+	));
 }
 
 void trimRightTrailingSpaces(std::string &input) {
@@ -152,7 +153,7 @@ std::string integerVectorToString(std::vector<int> list, int length = -1) {
 	return "[" + result.substr(0, result.length() - 2) + "]";
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char const *argv[]) {
 	std::string line;
 	while (std::getline(std::cin, line)) {
 		TreeNode* root = stringToTreeNode(line);

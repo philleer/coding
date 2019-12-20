@@ -55,11 +55,9 @@ public:
 	}
 };
 
-int main(int argc, char *argv[]) {
-	Solution solver;
-
+int main(int argc, char const *argv[]) {
 	std::vector<int> nums{10, 9, 2, 5, 3, 7, 101, 18};
-	int len = solver.lengthOfLIS(nums);
+	int len = Solution().lengthOfLIS(nums);
 	
 	std::cout << "original array: " << std::endl;
 	for (auto &num : nums) std::cout << num << " ";

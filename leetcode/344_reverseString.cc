@@ -43,11 +43,9 @@ public:
 	}
 };
 
-int main(int argc, char *argv[]) {
-	Solution solver;
-
+int main(int argc, char const *argv[]) {
 	std::vector<char> str{'h', 'e', 'l', 'l', 'o'};
-	solver.reverseString(str);
+	Solution().reverseString(str);
 	
 	std::cout << "original string: " << std::endl;
 	for (auto &c : str) std::cout << c << " ";

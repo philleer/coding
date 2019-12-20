@@ -13,13 +13,13 @@
  * or just correct it via Pull Request or create an issue.
  ******************************************************************************
  */
-// 79.Word Search
 #include <iostream>
 #include <vector>
 #include <string>
 
 class Solution {
 public:	
+	// 79.Word Search
 	/*=====================================================================
 	 * Description: Given a 2D board and a word, find if the word exists in
 	 *	the grid. The word can be constructed from letters of
@@ -111,7 +111,7 @@ public:
 	}
 };
 
-int main (int argc, char *argv[]) {
+int main (int argc, char const *argv[]) {
 	std::vector<std::vector<char>> board{{'A', 'B', 'C', 'E'},
 					     {'S', 'F', 'C', 'S'},
 					     {'A', 'D', 'E', 'E'}};
@@ -131,4 +131,3 @@ int main (int argc, char *argv[]) {
 
 	return 0;
 }
-

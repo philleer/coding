@@ -20,9 +20,10 @@
 class Solution {
 public:
 	// 28. Implement strStr()
-	/* ========================================================================
-	 * Description: Implement strStr. Return the index of the first occurrence
-	 *	of needle in haystack, or -1 if needle is not part of haystack.
+	/* ====================================================================
+	 * Description: Implement strStr. Return the index of the first
+	 *	occurrence of needle in haystack, or -1 if needle is not part
+	 *	of haystack.
 	 *
 	 * Example:
 	 *	Input: haystack = "hello", needle = "ll"
@@ -31,11 +32,13 @@ public:
 	 *	Input: haystack = "aaaaa", needle = "bba"
 	 *	Output: -1
 	 *
-	 * Clarification: What should we return when needle is an empty string?
-	 *	This is a great question to ask during an interview. For the purpose of
-	 *	this problem, we will return 0 when needle is an empty string. This is
-	 *	consistent to C's strstr() and Java's indexOf().
-	 * ========================================================================
+	 * Clarification:
+	 *	What should we return when needle is an empty string?
+	 *	This is a great question to ask during an interview. For the
+	 *	purpose of this problem, we will return 0 when needle is an
+	 *	empty string. This is consistent to C's strstr() and Java's
+	 *	indexOf().
+	 * ====================================================================
 	 */
 	int strStr(std::string haystack, std::string needle) {
 		if (needle.empty()) return 0;
@@ -44,8 +47,8 @@ public:
 			int index = 0;
 			if (haystack[i] == needle[index++]) {
 				while (index+i < haystack.length() &&
-					   index < needle.length() &&
-					   haystack[index+i] == needle[index])
+				       index < needle.length() &&
+				       haystack[index+i] == needle[index])
 				{
 					++index;
 				}
@@ -113,8 +116,11 @@ public:
 		next[0] = -1;
 		for (int i = 1; i < next.size(); ++i) {
 			int tmp = next[i-1];
-			while (tmp > 0 && pattern[i-1] != pattern[tmp]) tmp = next[tmp];
-			next[i] = ((tmp>=0 && pattern[i-1]==pattern[tmp]) ? tmp+1 : 0);
+			while (tmp > 0 && pattern[i-1] != pattern[tmp]){
+				tmp = next[tmp];
+			}
+			next[i] = ((tmp>=0 && pattern[i-1]==pattern[tmp]) ?
+				   tmp+1 : 0);
 		}
 	}
 
@@ -141,11 +147,10 @@ public:
 int main(int argc, char const *argv[]) {
 	std::string str = "Mississipriver";
 	std::string model = "issip";
-	Solution solver;
-	int res = solver.strStr(str, model);
-	std::cout << "The original string:\n" << str << "\n" << model << std::endl;
+	int res = Solution().strStr(str, model);
+	std::cout << "The original string:\n" << str << "\n"
+		<< model << std::endl;
 	std::cout << "The pattern in the string? " << res << std::endl;
 
 	return 0;
 }
-

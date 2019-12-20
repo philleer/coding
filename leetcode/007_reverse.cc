@@ -16,8 +16,6 @@
 #include <iostream>
 #include <cstdio>
 
-using namespace std;
-
 class Solution {
 public:
         // 007.reverse
@@ -55,12 +53,11 @@ public:
         }
 };
 
-int main(int argc, char** argv) {
+int main(int argc, const char* argv[]) {
         int x = -1;
         scanf("%d", &x);
 
-        Solution solver;
-        int res = solver.reverse(x);
+        int res = Solution().reverse(x);
         printf("The original number is:%d\n", x);
         printf("The result number is: %d\n", res);
 

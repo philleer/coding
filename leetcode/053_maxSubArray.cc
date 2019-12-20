@@ -1,24 +1,23 @@
-// The source is part of my coding practice, a lightweight C++
-// solution for leetcode program practice.
-//
-// For all of my code, after check it online by submit, I also compile
-// and run it by my offline IDE 
-// ===================================================================
-// ********* Microsoft Visual Studio 2010 when I use windows *********
-// *********           G++5.4.0 when I am on Linux           *********
-// ===================================================================
-//
-// If any question, feel free to send me an email
-// phillee2016@163.com
-// or just correct it via Pull Request or create an issue.
-
+/******************************************************************************
+ * The source is part of my coding practice, a lightweight C++ solution for
+ * leetcode program practice.
+ *
+ * For all of my code, after check it online by submit, I also compile and run
+ * it by my offline machine
+ * ============================================================================
+ * ////////////// Microsoft Visual Studio 2010 when I use windows /////////////
+ * //////////////           G++5.4.0 when I am on Linux           /////////////
+ * ============================================================================
+ *
+ * If any question, feel free to send me an email << phillee2016@163.com >>
+ * or just correct it via Pull Request or create an issue.
+ ******************************************************************************
+ */
 #include <iostream>
 #include <vector>
 #include <cmath>
 
 #define	INFMIN -2147483647
-
-using namespace std;
 
 class Solution {
 public:
@@ -43,7 +42,7 @@ public:
 	 * Space complexity : O(1)
 	 *=====================================================================
 	 */
-	int maxSubArray1(vector<int> &nums) {
+	int maxSubArray1(std::vector<int> &nums) {
 		// take special case into account
 		if (nums.empty()) return 0;
 
@@ -67,11 +66,11 @@ public:
 	 * Time complexity : T(n) = 2T(n/2) + n ==> O(n) = T(n) = O(nlogn)
 	 *=====================================================================
 	 */
-	int maxSubArray2(vector<int> &nums) {
+	int maxSubArray2(std::vector<int> &nums) {
 		return maxSubArrayRecursively(nums, 0, nums.size() - 1);
 	}
 
-	int maxSubArrayRecursively(vector<int> &nums, 
+	int maxSubArrayRecursively(std::vector<int> &nums, 
     		int leftIndex, int rightIndex)
 	{
 		int maxSum = 0;
@@ -81,9 +80,11 @@ public:
 		} else {
 			int middleIndex = (leftIndex + rightIndex) / 2;
 			int maxLeftSum = maxSubArrayRecursively(nums, 
-				leftIndex, middleIndex);
+								leftIndex,
+								middleIndex);
 			int maxRightSum = maxSubArrayRecursively(nums, 
-				middleIndex + 1, rightIndex);
+								 middleIndex+1,
+								 rightIndex);
 			
 			int temp = 0;
 			int maxHalfSumLeft = INFMIN;
@@ -110,20 +111,20 @@ public:
 	}
 };
 
-int main(int argc, char **argv) {
+int main(int argc, const char *argv[]) {
 	int arrayTest[2] = {-2,1};
-	vector<int> nums;
+	std::vector<int> nums;
 	nums.assign(arrayTest, arrayTest + 2);
 
 	Solution solver;
-	cout << "Dynamic programming solution:"
+	std::cout << "Dynamic programming solution:"
 		 << "\tMaximum addition of subarrays = "
 		 << solver.maxSubArray1(nums)
-		 << endl;
-	cout << "Divide and conquer recursively:"
+		 << std::endl;
+	std::cout << "Divide and conquer recursively:"
 		 << "\tMaximum addition of subarrays = "
 		 << solver.maxSubArray2(nums) 
-		 << endl;		 
+		 << std::endl;		 
 
 	return 0;
 }

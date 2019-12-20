@@ -25,14 +25,15 @@ public:
 	 *	if it could become non-decreasing by modifying at most 1 element.
 	 *      We define array is non-decreasing if array[i] <= array[i + 1]
 	 *      holds for every i(0 <= i < n).
-	 * Example:
+	 *
+	 * Example :
 	 *	Input1: [4,2,3]		Output1: True
 	 * 	Explanation: Modify 4 to 1 to get a non-decreasing array.
 	 *
 	 *      Input2: [4,2,1]		Output: False
 	 *	Explanation: You can't get a non-decreasing array by modify at
 	 *      most one element.
-	 * Note: The n belongs to [1, 10,000].
+	 * Note : The n belongs to [1, 10,000].
 	 *=====================================================================
 	 */
 	bool checkPossibility(std::vector<int>& nums) {
@@ -60,8 +61,8 @@ public:
 			// ====================================================
 			++num;
 			if (i > 0 && i < size-2) {
-				if (nums[i+1] > nums[i+2] ||
-				    (nums[i-1] > nums[i+1] && nums[i] > nums[i+2]))
+				if (nums[i+1]>nums[i+2] ||
+				    (nums[i-1]>nums[i+1] && nums[i]>nums[i+2]))
 				{
 				    return false;
 				}
@@ -93,7 +94,7 @@ public:
 	}
 };
 
-int main(int argc, char **argv) {
+int main(int argc, char const *argv[]) {
 	std::vector<int> vec1 = {2, 3, 3, 2, 4};
 	std::vector<int> vec2 = {-1, 4, 2, 3, 3};
 	std::vector<int> vec3 = {3, 3, 2, 4};

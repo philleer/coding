@@ -20,47 +20,42 @@
 
 class Solution {
 public:
-	/*=========================================================================
-	 * Description: Given n pairs of parentheses, write a function to generate
-	 *	all combinations of well-formed parentheses.
+	/*=====================================================================
+	 * Description: Given n pairs of parentheses, write a function to
+	 *	generate all combinations of well-formed parentheses.
+	 *
 	 * Example:
 	 *	Input: 3
 	 *	Output: ["((()))", "(()())", "(())()", "()(())", "()()()"]
-	 *=========================================================================
+	 *=====================================================================
 	 */
 	std::vector<std::string> generateParenthesis(int n) {
 		std::vector<std::string> result;
 		std::string str;
-		cached(result, str, 0, 0, n);
+		helper(result, str, 0, 0, n);
 		return result;
 	}
 	
 	// Note str is just a copy rather than reference here
-	void cached(std::vector<std::string> &result, std::string str,
+	void helper(std::vector<std::string> &result, std::string str,
 		int left, int right, int n) {
 		if (str.length() == 2 * n) {
 			result.push_back(str);
 			return ;
 		}
 		
-		if (left < n) {
-			cached(result, str+"(", left+1, right, n);
-		}
-		if (right < left) {
-			cached(result, str+")", left, right+1, n);
-		}
+		if (left < n) helper(result, str+"(", left+1, right, n);
+		if (right < left) helper(result, str+")", left, right+1, n);
 	}
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, const char *argv[]) {
 	int n = 3;
-	Solution solver;
 	
-	std::vector<std::string> result = solver.generateParenthesis(n);
+	std::vector<std::string> result = Solution().generateParenthesis(n);
 	for (int i = 0; i < result.size(); ++i) {
 		std::cout << result[i] << std::endl;
 	}
 
 	return 0;
 }
-

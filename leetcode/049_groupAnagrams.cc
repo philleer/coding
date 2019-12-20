@@ -75,7 +75,7 @@ int main(int argc, char const *argv[]) {
 		for (auto &s : strs) {
 			std::cout << s << ", ";
 		}
-		std::cout << "]\n;
+		std::cout << "]\n";
 		std::vector<std::vector<std::string>> res =
 			Solution().groupAnagrams(strs);
 		for (int i = 0; i < res.size(); ++i) {

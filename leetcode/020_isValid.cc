@@ -13,16 +13,16 @@
  * or just correct it via Pull Request or create an issue.
  ******************************************************************************
  */
-// 20. Valid Parentheses
 #include <iostream>
 #include <vector>
 #include <stack>
 
 class Solution {
 public:
-	/*=========================================================================
-	 * Description: Given a string containing just the characters'(', ')', '{',
-	 *	'}', '[' and ']', determine if the input string is valid.
+	// 20. Valid Parentheses
+	/*=====================================================================
+	 * Description: Given a string containing just the characters'(', ')',
+	 * 	'{', '}', '[' and ']', determine if the input string is valid.
 	 *	An input string is valid if:
 	 *	Open brackets must be closed by the same type of brackets.
 	 *	Open brackets must be closed in the correct order.
@@ -33,7 +33,7 @@ public:
 	 * 	Input: "(]"		Output: false
 	 * 	Input: "([)]"	Output: false
 	 * 	Input: "{[]}"	Output: true
-	 *=========================================================================
+	 *======================================================================
 	 */
 	bool isValid(std::string s) {
 		std::stack<char> st;
@@ -44,10 +44,16 @@ public:
 				(st.top() == '{' && s[i] == '}'))) {
 				st.pop();
 			} else {
-				if (!st.empty() && ((st.top() == '(' && (s[i] == ']' || s[i] == '}')) ||
-					(st.top() == '[' && (s[i] == ')' || s[i] == '}')) ||
-					(st.top() == '{' && (s[i] == ']' || s[i] == ')')))
-					)
+				if (!st.empty() &&
+				    (
+				     (st.top() == '(' &&
+				      (s[i] == ']' || s[i] == '}')) ||
+				     (st.top() == '[' &&
+				      (s[i] == ')' || s[i] == '}')) ||
+				     (st.top() == '{' &&
+				      (s[i] == ']' || s[i] == ')'))
+				    )
+				   )
 					return false;
 				else
 					st.push(s[i]);
@@ -58,13 +64,15 @@ public:
 	}
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, char const* argv[]) {
 	std::string s1 = "()[]{}";
 	Solution solver;
 	
-	std::cout << s1 << " " << (solver.isValid(s1)) ? "true" : "false" << std::endl;
+	std::cout << s1 << " " << (solver.isValid(s1)) ? "true" : "false"
+		<< std::endl;
 	s1 = "(]";
-	std::cout << s1 << " " << (solver.isValid(s1)) ? "true" : "false" << std::endl;
+	std::cout << s1 << " " << (solver.isValid(s1)) ? "true" : "false"
+		<< std::endl;
 
 	return 0;
 }

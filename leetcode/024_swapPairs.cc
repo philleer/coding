@@ -81,9 +81,9 @@ public:
 };
 
 void trimLeftTrailingSpaces(std::string &input) {
-        input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch) {
-                return !isspace(ch);
-        }));
+        input.erase(input.begin(), find_if(input.begin(), input.end(),
+                [](int ch) { return !isspace(ch); }
+        ));
 }
 
 void trimRightTrailingSpaces(std::string &input) {
@@ -134,13 +134,12 @@ std::string listNodeToString(ListNode* node) {
         return "[" + result.substr(0, result.length() - 2) + "]";
 }
 
-int main() {
+int main(int argc, const char* argv[]) {
         std::string line;
         while (std::getline(std::cin, line)) {
                 ListNode* head = stringToListNode(line);
                 ListNode* ret = Solution().swapPairs(head);
-                std::string out = listNodeToString(ret);
-                std::cout << out << std::endl;
+                std::cout << listNodeToString(ret) << std::endl;
         }
     
         return 0;

@@ -24,8 +24,7 @@ public:
 	/*=====================================================================
 	 * Description: Given a string s consists of upper/lower-case alphabets
 	 *	and empty space characters ' ', return the length of last word
-	 *	in the string.
-	 *	If the last word does not exist, return 0.
+	 *	in the string. If the last word does not exist, return 0.
 	 *
 	 * Note:
 	 *	A word is defined as a character sequence consists of non-space
@@ -125,7 +124,7 @@ public:
 	}
 };
 
-int main(int argc, char *argv[]) {
+int main(int argc, char const *argv[]) {
 	std::string line;
 	while (std::getline(std::cin, line)) {
 		std::stringstream ss;
@@ -143,4 +142,4 @@ int main(int argc, char *argv[]) {
 			Solution().addBinary(strs[0], strs[1]) << std::endl;
 	}
 	return 0;
-
+}
