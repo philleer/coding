@@ -64,20 +64,89 @@ public:
 		
 		return (n-index);
 	}
+
+	// 80. Remove Duplicates from Sorted Array II
+	/*=====================================================================
+	 * Description: Given a sorted array nums, remove the duplicates
+	 * 	in-place such that duplicates appeared at most twice and return
+	 * 	the new length.
+	 *	Do not allocate extra space for another array...
+	 *
+	 * Example:
+	 *      Input: nums = [1,1,1,2,2,3]  Output: 5
+	 *      Explination: Your function should return length = 5, with the
+	 *	first five elements of nums being 1, 1, 2, 2 and 3 respectively.
+	 *	It doesn't matter what you leave beyond the returned length.
+	 *
+	 *      Input: nums = [0,0,1,1,1,1,2,3,3]    Output: 7
+	 *      Explination: the first seven elements of nums being modified to
+	 *	0, 0, 1, 1, 2, 3 and 3 respectively.
+	 *=====================================================================
+	 */
+	int removeDuplicatesII(std::vector<int>& nums) {
+		if (nums.size() <= 2) return nums.size();
+
+		std::vector<int>::iterator it1 = nums.begin();
+		for (std::vector<int>::iterator it = it1+2; it != nums.end(); it++) {
+			if (*it == *it1) {
+				it = nums.erase(it);
+				it--;
+			} else {
+				it1++;
+			}
+		}
+
+		return nums.size();
+    	}
+
+    	int removeDuplicatesIIImp(std::vector<int>& nums) {
+		if (nums.size() <= 2) return nums.size();
+
+		int i = 0;
+		for (auto n : nums) {
+			if (i < 2 || n > nums[i-2]) {
+				nums[i++] = n;
+			}
+		}
+
+		return i;
+	}
 };
 
 // const char * = char const *
 int main(int argc, const char *argv[]) {
-	std::vector<int> nums{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
-	
-	int result = Solution().removeDuplicates(nums);
-	std::cout << "array before modified: " << std::endl;
-	for (auto &num : nums) std::cout << num << " ";
-	std::cout << std::endl;
+	// std::vector<int> nums{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+	// 
+	// int result = Solution().removeDuplicates(nums);
+	// std::cout << "array before modified: " << std::endl;
+	// for (auto &num : nums) std::cout << num << " ";
+	// std::cout << std::endl;
 
-	std::cout << "array after modified:" << std::endl;
-	for (int i = 0; i < result; ++i) std::cout << nums[i] << " ";
-	std::cout << std::endl;
+	// std::cout << "array after modified:" << std::endl;
+	// for (int i = 0; i < result; ++i) std::cout << nums[i] << " ";
+	// std::cout << std::endl;
+	
+	std::string line;
+	while (std::getline(std::cin, line)) {
+		std::stringstream ss;
+		ss.str(line);
+		std::vector<int> nums;
+		char ch;
+		while (std::getline(ss, ch, ',')) {
+			nums.push_back(std::atoi(ch));
+		}
+		std::cout << "The input nums is:\n[ " << std::endl;
+		for (auto &num : nums) std::cout << num << " ";
+		std::cout << " ]" << std::endl;
+
+		int res = Solution().removeDuplicates(nums);
+		// int res = Solution().removeDuplicatesII(nums);
+		std::cout << "After removal size of nums is: "
+			<< res << std::endl;
+		std::cout << "And after modification nums is:\n[ " << std::endl;
+		for (int i = 0; i < res; ++i) std::cout << nums[i] << " ";
+		std::cout << " ]" << std::endl;
+	}
 
 	return 0;
 }
