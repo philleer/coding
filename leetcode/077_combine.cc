@@ -19,50 +19,62 @@
 
 class Solution {
 public:
-	// 58. Length of Last Word
+	// 77. Combinations
 	/*=====================================================================
-	 * Description: Given a string s consists of upper/lower-case alphabets
-	 * 	and empty space characters ' ', return the length of last word
-	 * 	in the string.
-	 *	If the last word does not exist, return 0.
-	 *
-	 * Note:
-	 *	A word is defined as a character sequence consists of non-space
-	 *	characters only.
+	 * Description: Given two integers n and k, return all possible
+	 *	combinations of k numbers out of 1 ... n.
 	 *
 	 * Example:
-	 * 	Input: "Hello World"	Output: 5
+	 * 	Input: n = 4, k = 2
+	 *	Output: [[2,4], [3,4], [2,3], [1,2], [1,3], [1,4]]
 	 *=====================================================================
 	 */
-	int lengthOfLastWord(std::string s) {
-		if (s.empty()) return 0;
+	std::vector<std::vector<int>> combine(int n, int k) {
+		std::vector<std::vector<int>> res;
+		if (k > n) return res;
 
-		int index = 0, res = 0;
-		for (int i = s.length()-1; i >= 0; --i) {
-			if (i == s.length()-1 && s[i] == ' ') {
-				while (i>0 && s[--i] == ' ');
-				if (i>0) ++i;
-			} else {
-				index = i;
-				break;
-			}
-		}
-
-		for (int i = index; i >= 0; --i) {
-			if (s[i] != ' ') ++res;
-			else break;
-		}
-
+		std::vector<int> sol;
+		helper(n, k, res, sol, 1);
 		return res;
+	}
+
+	void helper(int n, int k, std::vector<std::vector<int>> &res,
+		    std::vector<int> &sol,
+		    int index)
+	{
+		if (sol.size() >= k) {
+			res.push_back(sol);
+			return ;
+		}
+
+		for (int i = index; i <= n; ++i) {
+			sol.push_back(i);
+			helper(n, k, res, sol, i+1);
+			sol.pop_back();
+		}
 	}
 };
 
 int main(int argc, char const *argv[]) {
 	std::string line;
 	while (std::getline(std::cin, line)) {
-		std::cout << "The input string is:\n" << line << std::endl;
-		std::cout << "The length of the last word is:\n"
-			<< Solution().lengthOfLastWord(line) << std::endl;
+		std::stringstream ss;
+		ss.str(line);
+		int n, k;
+		ss >> n >> k;
+		std::cout << "The input parameter is:\n" << n << ", "
+			<< k << std::endl;
+		
+		std::vector<std::vector<int>> res = Solution().combine(n, k);
+		std::cout << "The combinations is:\n[" << std::endl;
+		for (int i = 0; i < res.size(); ++i) {
+			std::cout << "  [ ";
+			for (int j = 0; j < res[i].size(); ++j) {
+				std::cout << res[i][j] << " "
+			}
+			std::cout << " ]\n";
+		}
+		std::cout << "]" << std::endl;
 	}
 
 	return 0;
